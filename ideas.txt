@@ -1,0 +1,16 @@
+﻿-- Weapons --
+Chordressant
+Cryosis
+Death Bringer's Blade
+Shaded Scythe
+Bleeding Scythe
+Hellstorm
+
+-- Spell Tomes --
+Tale of Two Evils
+Snapshot
+Wall of Fire
+
+-- Bosses --
+Jungle- Giant Tiki Head- "Kāne, the God of Life"
+Ocean- Covina
