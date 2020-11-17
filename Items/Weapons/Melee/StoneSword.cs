@@ -25,8 +25,8 @@ namespace Retribution.Items.Weapons.Melee
             item.knockBack = 1;
             item.value = Items.buyPrice(Copper: 50);
             item.rare = ItemRarityID.Green;
-            item.autoReuse = false
-            item.crit = 0
+            item.autoReuse = false;
+            item.crit = 0;
             item.useStyle = ItemUseStyleID.SwingThrow;
         }
 
@@ -37,7 +37,7 @@ namespace Retribution.Items.Weapons.Melee
             recipe.AddTile(TileID.Workbeches, );
             recipe.SetResult(this);
             recipe.needWater = false;
-            recipe.AddRecipe()
+            recipe.AddRecipe();
         }
     }
 }
