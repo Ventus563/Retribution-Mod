@@ -7,14 +7,14 @@ using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace Retribution.Items
+namespace Retribution.Items.Souls
 {
-	public class oceansoul : ModItem
+	public class frozensoul : ModItem
 	{
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ocean Soul");
+			DisplayName.SetDefault("Frozen Soul");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
 			ItemID.Sets.AnimatesAsSoul[item.type] = true;
 			ItemID.Sets.ItemNoGravity[item.type] = true;

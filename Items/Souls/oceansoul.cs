@@ -7,7 +7,7 @@ using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace Retribution.Items
+namespace Retribution.Items.Souls
 {
 	public class oceansoul : ModItem
 	{

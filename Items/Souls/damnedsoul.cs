@@ -9,12 +9,12 @@ using Terraria.ModLoader;
 
 namespace Retribution.Items.Souls
 {
-	public class forestsoul : ModItem
+	public class damnedsoul : ModItem
 	{
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Forest Soul");
+			DisplayName.SetDefault("Damned Soul");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
 			ItemID.Sets.AnimatesAsSoul[item.type] = true;
 			ItemID.Sets.ItemNoGravity[item.type] = true;
