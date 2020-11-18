@@ -23,7 +23,8 @@ namespace Retribution.Items.Weapons.Reaper
 		{
 			item.channel = true;
 			item.maxStack = 1;
-			item.damage = 100;
+			item.damage = 80;
+			item.crit = 5;
 			item.width = 32;
 			item.height = 34;
 			item.useTime = 20;
@@ -33,7 +34,6 @@ namespace Retribution.Items.Weapons.Reaper
 			item.value = Item.sellPrice(0, 15, 0, 0);
 			item.rare = 3;
 			item.noMelee = true;
-			item.UseSound = SoundID.Item1;
 			item.useTurn = true;
 		}
 
@@ -69,33 +69,6 @@ namespace Retribution.Items.Weapons.Reaper
 			{
 				return false;
 			}
-		}
-
-		public override void MeleeEffects(Player player, Rectangle hitbox)
-		{
-			if (player.altFunctionUse == 2)
-			{
-				{
-					int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Fire, player.velocity.X * 0.2f + (float)(player.direction * 3), player.velocity.Y * 0.2f, 100, default(Color), 2.5f);
-					Lighting.AddLight(item.Center, Color.Orange.ToVector3() * 0.98f);
-				}
-			}
-			else
-			{
-				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Fire, player.velocity.X * 0.2f + (float)(player.direction * 3), player.velocity.Y * 0.2f, 100, default(Color), 2.5f);
-				Main.dust[dust].noGravity = true;
-				Lighting.AddLight(item.Center, Color.Orange.ToVector3() * 0.98f);
-			}
-		}
-
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.DemoniteBar, 10);
-			//recipe.AddIngredient(ModContent.GetInstance<Items.souldust>());
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
 		}
 	}
 }

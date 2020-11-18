@@ -19,7 +19,7 @@ namespace Retribution.Items
 			item.width = 12;
 			item.height = 14;
 			item.value = 80;
-			item.createTile = mod.TileType("bluemoss");
+			item.createTile = mod.TileType("swampherb");
 		}
 	}
 }
