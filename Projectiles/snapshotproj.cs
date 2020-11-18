@@ -13,8 +13,8 @@ namespace Retribution.Projectiles
 	{
 		public override void SetDefaults()
 		{
-			projectile.width = 1266;
-			projectile.height = 1262;
+			projectile.width = 640;
+			projectile.height = 635;
 			projectile.aiStyle = 0;
 			projectile.friendly = true;
 			projectile.ranged = true;
