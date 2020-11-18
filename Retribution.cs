@@ -28,8 +28,8 @@ namespace Retribution
 
 		internal soulbar soulbar;
 
-        public override void Load()
-        {
+		public override void Load()
+		{
 			if (!Main.dedServ)
 			{
 				soulbar = new soulbar();
@@ -49,7 +49,7 @@ namespace Retribution
 			if (resourceBarIndex != -1)
 			{
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
-					"Retribution: Soul Fragments",
+					"Retribution: Souls",
 					delegate {
 						_soulbarUserInterface.Draw(Main.spriteBatch, new GameTime());
 						return true;
@@ -77,37 +77,35 @@ namespace Retribution
 
 		public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
-			if (Main.LocalPlayer.GetModPlayer<RetributionPlayer>().ZoneMoss)
+			if (Main.LocalPlayer.GetModPlayer<RetributionPlayer>().ZoneSwamp)
 			{
 				music = GetSoundSlot(SoundType.Music, "Sounds/Music/moss");
 			}
 		}
 
-		/*public override void ModifySunLightColor(ref Color tileColor, ref Color backgroundColor)
+		public override void ModifySunLightColor(ref Color tileColor, ref Color backgroundColor)
 		{
-			if (RetributionWorld.mossTiles <= 0)
+			if (RetributionWorld.swampTiles <= 0)
 			{
 				return;
 			}
 
-			if (RetributionWorld.mossTiles > 350)
-			{
-				float Strength = RetributionWorld.mossTiles / 200f;
-				Strength = Math.Min(Strength, 1f);
+			float exampleStrength = RetributionWorld.swampTiles / 200f;
+			exampleStrength = Math.Min(exampleStrength, 1f);
 
-				int sunR = backgroundColor.R;
-				int sunG = backgroundColor.G;
-				int sunB = backgroundColor.B;
-
-				sunR = Utils.Clamp(sunR, 3, 255);
-				sunG = Utils.Clamp(sunG, 50, 255);
-				sunB = Utils.Clamp(sunB, 150, 155);
-
-				backgroundColor.R = (byte)sunR;
-				backgroundColor.G = (byte)sunG;
-				backgroundColor.B = (byte)sunB;
-			}
-		}*/
+			int sunR = backgroundColor.R;
+			int sunG = backgroundColor.G;
+			int sunB = backgroundColor.B;
+			// Remove some green and more red.
+			sunR -= (int)(180f * exampleStrength * (backgroundColor.R / 255f));
+			sunB -= (int)(90f * exampleStrength * (backgroundColor.B / 255f));
+			sunR = Utils.Clamp(sunR, 15, 255);
+			sunG = Utils.Clamp(sunG, 15, 255);
+			sunB = Utils.Clamp(sunB, 15, 255);
+			backgroundColor.R = (byte)sunR;
+			backgroundColor.G = (byte)sunG;
+			backgroundColor.B = (byte)sunB;
+		}
 
 		public override void PostSetupContent()
 		{
