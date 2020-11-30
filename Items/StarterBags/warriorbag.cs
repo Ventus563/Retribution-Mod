@@ -2,6 +2,7 @@ using Retribution.Items.Weapons.Melee;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Retribution.Items.Materials;
 
 namespace Retribution.Items.StarterBags
 {

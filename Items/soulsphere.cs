@@ -9,52 +9,70 @@ using Terraria.ModLoader;
 
 namespace Retribution.Items
 {
-	public class soulsphere : ModItem
+	public class soulsphere : ReaperClass
 	{
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Soul Sphere");
 			Tooltip.SetDefault("Permanently increases soul storage by 5");
-			// ticksperframe, frameCount
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
 			ItemID.Sets.AnimatesAsSoul[item.type] = true;
-			ItemID.Sets.ItemIconPulse[item.type] = true;
 			ItemID.Sets.ItemNoGravity[item.type] = true;
 		}
 
-		public override void SetDefaults()
+		public override void SafeSetDefaults()
 		{
-			item.width = 40;
-			item.height = 42;
+			item.width = 38;
+			item.height = 38;
 			item.useStyle = 4;
-			item.useAnimation = 15;
+			item.useAnimation = 100;
 			item.useTime = 100;
 			item.useTurn = true;
+			item.noUseGraphic = true;
 			item.UseSound = SoundID.Item25;
-			item.maxStack = 1;
+			item.maxStack = 5;
 			item.value = 30000;
-			item.consumable = false;
+			item.consumable = true;
 		}
 
-		public override bool UseItem(Player player)
+		public override bool CanUseItem(Player player)
 		{
 			var rP = player.GetModPlayer<RetributionPlayer>();
 
-			if (rP.soulMax < 40)
+			if (rP.soulMax < 50)
 			{
-				rP.soulMax += 2;
+				return true;
+			}
+
+			return false;
+		}
+
+        public override bool UseItem(Player player)
+		{
+			var rP = player.GetModPlayer<RetributionPlayer>();
+
+			if (rP.soulMax < 50)
+			{
+				rP.soulMax += 5;
 			}
 			return true;
 		}
 
-        /*public override void AddRecipes()
+        public override void AddRecipes()
         {
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "wanderingspirit", 3);
-			recipe.AddTile(TileID.Furnaces);
+			recipe.AddIngredient(null, "desertsoul", 5);
+			recipe.AddIngredient(null, "frozensoul", 5);
+			recipe.AddIngredient(null, "evilsoul", 5);
+			recipe.AddIngredient(null, "damnedsoul", 5);
+			recipe.AddIngredient(null, "cavernsoul", 5);
+			recipe.AddIngredient(null, "dungeonsoul", 5);
+			recipe.AddIngredient(null, "junglesoul", 5);
+			recipe.AddIngredient(null, "oceansoul", 5);
+			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}*/
+		}
     }
 }

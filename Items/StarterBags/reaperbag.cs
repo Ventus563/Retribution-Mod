@@ -3,6 +3,7 @@ using Retribution.Items.Consumables;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Retribution.Items.Materials;
 
 namespace Retribution.Items.StarterBags
 {

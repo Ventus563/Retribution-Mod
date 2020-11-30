@@ -60,8 +60,7 @@ namespace Retribution
 		// As a modder, you could also opt to make these overrides also sealed. Up to the modder
 		public override void ModifyWeaponDamage(Player player, ref float add, ref float mult, ref float flat)
 		{
-			add += RetributionPlayer.ModPlayer(player).reaperDamageAdd;
-			mult *= RetributionPlayer.ModPlayer(player).reaperDamageMult;
+			mult *= RetributionPlayer.ModPlayer(player).reaperDamage;
 		}
 
 		public override void GetWeaponKnockback(Player player, ref float knockback)
@@ -96,11 +95,11 @@ namespace Retribution
         // Make sure you can't use the item if you don't have enough resource and then use 10 resource otherwise.
         public override bool CanUseItem(Player player)
 		{
-			var retributionPlayer = player.GetModPlayer<RetributionPlayer>();
+			var rP = player.GetModPlayer<RetributionPlayer>();
 
-			if (retributionPlayer.soulCurrent >= soulCost)
+			if (rP.soulCurrent >= soulCost)
 			{
-				retributionPlayer.soulCurrent -= soulCost;
+				rP.soulCurrent -= soulCost;
 				return true;
 			}
 			return false;

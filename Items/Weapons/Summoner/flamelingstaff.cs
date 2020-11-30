@@ -26,11 +26,11 @@ namespace Retribution.Items.Weapons.Summoner
 
 		public override void SetDefaults()
 		{
-			item.damage = 5;
+			item.damage = 3;
 			item.knockBack = 3f;
 			item.mana = 10;
-			item.width = 48;
-			item.height = 48;
+			item.width = 28;
+			item.height = 28;
 			item.useTime = 36;
 			item.useAnimation = 36;
 			item.useStyle = ItemUseStyleID.SwingThrow;
@@ -41,18 +41,17 @@ namespace Retribution.Items.Weapons.Summoner
 			// These below are needed for a minion weapon
 			item.noMelee = true;
 			item.summon = true;
-			item.buffType = ModContent.BuffType<blackholebuff>();
+			item.buffType = ModContent.BuffType<flamelingbuff>();
 			// No buffTime because otherwise the item tooltip would say something like "1 minute duration"
 			item.shoot = ModContent.ProjectileType<flameling>();
 		}
 
-		/*public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			// This is needed so the buff that keeps your minion alive and allows you to despawn it properly applies
 			player.AddBuff(item.buffType, 2);
 
 			return true;
-		}*/
+		}
 
 		public override void AddRecipes()
 		{

@@ -32,8 +32,9 @@ namespace Retribution
         public bool Pet = false;
         public static bool hasProjectile;
         public bool blackholeMinion = false;
+		public bool peeperMinion = false;
 
-        public bool ZoneSwamp = false;
+		public bool ZoneSwamp = false;
 		public bool addSoul = false;
 
         public override void UpdateBiomes()
@@ -55,6 +56,7 @@ namespace Retribution
             minionName = false;
             Pet = false;
             blackholeMinion = false;
+			peeperMinion = false;
 			ResetVariables();
 		}
 
@@ -63,16 +65,15 @@ namespace Retribution
 			return player.GetModPlayer<RetributionPlayer>();
 		}
 
-		public float reaperDamageAdd;
-		public float reaperDamageMult = 1f;
+		public float reaperDamage = 1f;
 		public float reaperKnockback;
 		public int reaperCrit;
 
 		public int soulCurrent;
-		public const int DefaultsoulMax = 25;
+		public const int DefaultsoulMax = 20;
 		public int soulMax;
 		public int soulMax2;
-		public int soulRecieve;
+		public int soulRecieve = 0;
 		public static readonly Color Healsoul = new Color(187, 91, 201);
 
         public override void Initialize()
@@ -88,8 +89,7 @@ namespace Retribution
         #region Reaper Class
         private void ResetVariables()
 		{
-			reaperDamageAdd = 0f;
-			reaperDamageMult = 1f;
+			reaperDamage = 1f;
 			reaperKnockback = 0f;
 			reaperCrit = 0;
 			soulMax2 = soulMax;
@@ -106,6 +106,7 @@ namespace Retribution
 			{
 				soulCurrent += 1 + soulRecieve;
 				addSoul = false;
+				soulRecieve = 0;
 			}
 
 			soulCurrent = Utils.Clamp(soulCurrent, 0, soulMax2);

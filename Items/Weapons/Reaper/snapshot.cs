@@ -45,7 +45,7 @@ namespace Retribution.Items.Weapons.Reaper
 			{
 				item.channel = true;
 				item.maxStack = 1;
-				item.damage = 80;
+				item.damage = 40;
 				item.crit = 5;
 				item.width = 32;
 				item.height = 34;

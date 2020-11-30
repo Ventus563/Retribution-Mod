@@ -23,9 +23,10 @@ namespace Retribution.Items.Weapons.Mage
 			item.useAnimation = 30;
 			item.useStyle = 5;
 			item.knockBack = 5f;
-			item.value = Item.buyPrice(0, 0, 5, 0);
+			item.value = Item.buyPrice(0, 0, 0, 0);
 			item.rare = 0;
 			item.autoReuse = true;
+			item.UseSound = SoundID.Item20;
 			item.shoot = mod.ProjectileType("damagebullet");
 			item.shootSpeed = 10f;
 			item.mana = 1;

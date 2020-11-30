@@ -20,7 +20,7 @@ namespace Retribution.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			if (player.ownedProjectileCounts[ModContent.ProjectileType<blackhole>()] > 0)
+			if (player.ownedProjectileCounts[ModContent.ProjectileType<infernoring>()] > 0)
 			{
 				player.buffTime[buffIndex] = 18000;
 			}

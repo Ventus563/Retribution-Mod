@@ -2,15 +2,17 @@
 Chordressant
 Cryosis
 Death Bringer's Blade
-Shaded Scythe
-Bleeding Scythe
-Hellstorm
+Okatski
+Grot
+Perforater
 
 -- Spell Tomes --
 Tale of Two Evils
-Snapshot
 Wall of Fire
 
 -- Bosses --
-Jungle- Giant Tiki Head- "Kāne, the God of Life"
-Ocean- Covina
+Ocean- Covina- Giant Seadolphin
+Sky- Harpy Queen- Bullet Hell
+
+-- Mounts --
+Magic Bubble- infinite flying, really slow

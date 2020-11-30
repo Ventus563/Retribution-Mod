@@ -21,7 +21,7 @@ namespace Retribution.Buffs
 		{
 			RetributionPlayer modPlayer = RetributionPlayer.ModPlayer(player);
 
-			modPlayer.reaperDamageAdd += 0.15f;
+			modPlayer.reaperDamage += 0.15f;
 		}
 	}
 }

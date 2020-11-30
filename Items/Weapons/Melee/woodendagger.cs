@@ -29,8 +29,8 @@ namespace Retribution.Items.Weapons.Melee
 			item.useAnimation = 20;
 			item.useStyle = 1;
 			item.knockBack = 3f;
-			item.value = Item.sellPrice(0, 15, 0, 0);
-			item.rare = 3;
+			item.value = Item.sellPrice(0, 0, 0, 0);
+			item.rare = 0;
 			item.melee = true;
 			item.UseSound = SoundID.Item1;
 			item.useTurn = true;

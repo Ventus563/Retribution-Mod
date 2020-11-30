@@ -9,6 +9,11 @@ using Microsoft.Xna.Framework;
 using Terraria.GameContent.Generation;
 using System.Linq;
 using Retribution.Tiles;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.DataStructures;
+using Terraria.Localization;
+using Terraria.ModLoader.IO;
+using Retribution.Items;
 
 namespace Retribution
 {
@@ -16,18 +21,55 @@ namespace Retribution
     {
         public static int swampTiles = 0;
 
+        #region Boss Checks
+        public static bool downedVilacious = false;
+        public static bool downedSanguine = false;
         public static bool downedKane = false;
+        #endregion
 
+        #region Save/Load
+        public override TagCompound Save()
+        {
+            var downed = new List<string>();
+            if (downedKane)
+            {
+                downed.Add("Kane");
+            }
+
+            if (downedSanguine)
+            {
+                downed.Add("Sanguine");
+            }
+
+            if (downedVilacious)
+            {
+                downed.Add("Vilacious");
+            }
+
+            return new TagCompound
+            {
+                ["downed"] = downed,
+            };
+        }
+
+        public override void Load(TagCompound tag)
+        {
+            var downed = tag.GetList<string>("downed");
+            downedKane = downed.Contains("Kane");
+            downedSanguine = downed.Contains("Sanguine");
+            downedVilacious = downed.Contains("Vilacious");
+        }
+        #endregion
 
         // Going to work on later, not currently a priority.
         #region World Gen
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
-		{
-        	int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
-			if (ShiniesIndex != -1) {
+        {
+            int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
+            if (ShiniesIndex != -1) {
 
-				tasks.Insert(ShiniesIndex + 1, new PassLegacy("Rubidium", Rubidium));
-			}
+                tasks.Insert(ShiniesIndex + 1, new PassLegacy("Rubidium", Rubidium));
+            }
 
             /*int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Jungle"));
             if (genIndex == -1)
@@ -50,8 +92,33 @@ namespace Retribution
                     WorldGen.GrowTree(X, Y - 1);
                 }
 			}));*/
-		}
+        }
         #endregion
+
+        public override void PostWorldGen()
+        {
+            int[] itemsToPlaceInChests = { ModContent.ItemType<scratchedmirror>()};
+            int itemsToPlaceInChestsChoice = 5;
+            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
+            {
+                Chest chest = Main.chest[chestIndex];
+
+                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 0 * 36)
+                {
+                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                    {
+                        {
+                            if (chest.item[inventoryIndex].type == ItemID.None)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInChests));
+                                itemsToPlaceInChestsChoice = (itemsToPlaceInChestsChoice + 1) % itemsToPlaceInChests.Length;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         private void Rubidium(GenerationProgress progress)
         {

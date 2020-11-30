@@ -34,7 +34,7 @@ namespace Retribution.NPCs
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			return spawnInfo.player.GetModPlayer<RetributionPlayer>().ZoneMoss ? .4f : 0f;
+			return spawnInfo.player.GetModPlayer<RetributionPlayer>().ZoneSwamp ? .4f : 0f;
 		}
 
 		public void NPCLoot()

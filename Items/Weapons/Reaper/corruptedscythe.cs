@@ -31,7 +31,7 @@ namespace Retribution.Items.Weapons.Reaper
 			item.useStyle = 1;
 			item.knockBack = 6f;
 			item.value = Item.sellPrice(0, 1, 0, 0);
-			item.rare = 3;
+			item.rare = 0;
 			item.melee = true;
 			item.UseSound = SoundID.Item1;
 			item.useTurn = true;
@@ -51,7 +51,7 @@ namespace Retribution.Items.Weapons.Reaper
 				item.useStyle = ItemUseStyleID.HoldingOut;
 				item.useTime = 20;
 				item.useAnimation = 20;
-				item.damage = 15;
+				item.damage = 10;
 				item.crit = 10; 
 				item.noMelee = true;
 				item.melee = false;

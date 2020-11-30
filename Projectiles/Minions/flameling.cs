@@ -17,8 +17,6 @@ namespace Retribution.Projectiles.Minions
 			DisplayName.SetDefault("Flameling");
 			Main.projFrames[projectile.type] = 4;
 			ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
-
-			Main.projPet[projectile.type] = true;
 			ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
 			ProjectileID.Sets.Homing[projectile.type] = true;
 		}
@@ -51,17 +49,17 @@ namespace Retribution.Projectiles.Minions
 		{
 			Player player = Main.player[projectile.owner];
 
-			/*#region Active check
+			#region Active check
 			// This is the "active check", makes sure the minion is alive while the player is alive, and despawns if not
 			if (player.dead || !player.active)
 			{
-				player.ClearBuff(ModContent.BuffType<blackholebuff>());
+				player.ClearBuff(ModContent.BuffType<flamelingbuff>());
 			}
-			if (player.HasBuff(ModContent.BuffType<blackholebuff>()))
+			if (player.HasBuff(ModContent.BuffType<flamelingbuff>()))
 			{
 				projectile.timeLeft = 2;
 			}
-			#endregion*/
+			#endregion
 
 			const int NUM_DUSTS = 3;
 

@@ -22,7 +22,7 @@ namespace Retribution.Items.Weapons.Reaper
 		{
 			item.channel = true;
 			item.maxStack = 1;
-			item.damage = 8;
+			item.damage = 4;
 			item.width = 32;
 			item.height = 30;
 			item.useTime = 25;
@@ -30,7 +30,7 @@ namespace Retribution.Items.Weapons.Reaper
 			item.useStyle = 1;
 			item.knockBack = 6f;
 			item.value = Item.sellPrice(0, 1, 0, 0);
-			item.rare = 3;
+			item.rare = 0;
 			item.melee = true;
 			item.UseSound = SoundID.Item1;
 			item.useTurn = true;
@@ -50,7 +50,7 @@ namespace Retribution.Items.Weapons.Reaper
 				item.useStyle = ItemUseStyleID.HoldingOut;
 				item.useTime = 20;
 				item.useAnimation = 20;
-				item.damage = 10;
+				item.damage = 8;
 				item.crit = 10;
 				item.noMelee = true;
 				item.melee = false;
@@ -67,7 +67,7 @@ namespace Retribution.Items.Weapons.Reaper
 				item.useStyle = ItemUseStyleID.SwingThrow;
 				item.useTime = 20;
 				item.useAnimation = 20;
-				item.damage = 6;
+				item.damage = 4;
 				item.noMelee = false;
 				item.melee = true;
 				item.autoReuse = true;
@@ -86,8 +86,8 @@ namespace Retribution.Items.Weapons.Reaper
 			for (int i = 0; i < 3; i++)
 
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8)); //12 is the spread in degrees, although like with Set Spread it's technically a 24 degree spread due to the fact that it's randomly between 12 degrees above and 12 degrees below your cursor.
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI); //create the projectile
+				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(12));
+				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return false;
 		}

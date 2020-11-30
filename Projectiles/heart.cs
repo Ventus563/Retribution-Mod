@@ -25,6 +25,7 @@ namespace Retribution.Projectiles
 			projectile.tileCollide = true;
 			projectile.friendly = true;
 			projectile.penetrate = -1;
+			projectile.light = 0.5f;
 
 		}
 

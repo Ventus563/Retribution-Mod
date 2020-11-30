@@ -15,8 +15,8 @@ namespace Retribution.Items.Weapons.Reaper
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hellstorm");
-			Tooltip.SetDefault("Sprays a short-range array of firey bullets");
+			DisplayName.SetDefault("Bloodstorm");
+			Tooltip.SetDefault("Sprays a burst of blood while simeultaneusly raining blood from the sky");
 		}
 
 		public override void SafeSetDefaults()
@@ -131,6 +131,7 @@ namespace Retribution.Items.Weapons.Reaper
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.CrimtaneBar, 12);
+			recipe.AddIngredient(ModContent.ItemType<bleedingbackblade>());
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

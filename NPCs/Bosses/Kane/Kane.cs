@@ -35,7 +35,6 @@ namespace Retribution.NPCs.Bosses.Kane
             npc.noTileCollide = true;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
-            animationType = NPCID.CataractEye;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -140,11 +139,10 @@ namespace Retribution.NPCs.Bosses.Kane
                 npc.netUpdate = true;
                 return;
             }
-            if (Main.netMode != 1 && !Enraged && (!npc.HasValidTarget || !Main.player[npc.target].ZoneDungeon))
+            if (Main.netMode != 1 && !Enraged && (!npc.HasValidTarget || !Main.player[npc.target].ZoneJungle))
             {
                 Enraged = true;
                 npc.netUpdate = true;
-                Talk("You thought you could escape...");
                 Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
             }
             if (Enraged)

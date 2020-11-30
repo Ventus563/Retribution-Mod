@@ -76,7 +76,7 @@ namespace Retribution
 		}
 
 		public override void UpdateMusic(ref int music, ref MusicPriority priority)
-        {
+		{
 			if (Main.LocalPlayer.GetModPlayer<RetributionPlayer>().ZoneSwamp)
 			{
 				music = GetSoundSlot(SoundType.Music, "Sounds/Music/moss");
@@ -114,9 +114,9 @@ namespace Retribution
 			{
 				bossChecklist.Call(
 					"AddBoss",
-					6.5f,
+					9.5f,
 					ModContent.NPCType<NPCs.Bosses.Kane.Kane>(),
-					this, // Mod
+					this,
 					"Kāne, the God of Life",
 					(Func<bool>)(() => RetributionWorld.downedKane),
 					ModContent.ItemType<Items.mysterioustikitotem>(),
@@ -125,6 +125,36 @@ namespace Retribution
 					"Can be summoned any time of day in the Jungle",
 					"",
 					"Retribution/NPCs/Bosses/Kane/Kane_Boss");
+
+				bossChecklist.Call(
+					"AddMiniBoss",
+					1.1f,
+					ModContent.NPCType<NPCs.Minibosses.sanguine>(),
+					this,
+					"Sanguine",
+					(Func<bool>)(() => RetributionWorld.downedSanguine),
+					null,
+					new List<int> { ModContent.ItemType<Items.scythemold>(), ModContent.ItemType<Items.scythemold>() },
+					new List<int> { ModContent.ItemType<Items.scythemold>(), ModContent.ItemType<Items.scythemold>() },
+					"Has a 5% chance to spawn in the Crimson when it's raining",
+					"",
+					"",
+					(Func<bool>)(() => WorldGen.crimson == true));
+
+				bossChecklist.Call(
+					"AddMiniBoss",
+					1.2f,
+					ModContent.NPCType<NPCs.Minibosses.vilacious>(),
+					this,
+					"Vilacious",
+					(Func<bool>)(() => RetributionWorld.downedVilacious),
+					null,
+					new List<int> { ModContent.ItemType<Items.scythemold>(), ModContent.ItemType<Items.scythemold>() },
+					new List<int> { ModContent.ItemType<Items.scythemold>(), ModContent.ItemType<Items.scythemold>() },
+					"Has a 5% chance to spawn in the Corruption when it's raining",
+					"",
+					"",
+					(Func<bool>)(() => WorldGen.crimson == false));
 			}
 		}
 	}

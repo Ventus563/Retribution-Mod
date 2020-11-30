@@ -32,10 +32,11 @@ namespace Retribution.Projectiles
         public override void AI()
         {
 			Dust dust;
-			// You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
 			Vector2 position = projectile.Center;
-			dust = Terraria.Dust.NewDustPerfect(position, 43, new Vector2(0f, 0f), 0, new Color(255, 226, 0), 5f);
-			dust.shader = GameShaders.Armor.GetSecondaryShader(95, Main.LocalPlayer);
+			dust = Terraria.Dust.NewDustPerfect(position, 77, new Vector2(0f, 0f), 157, new Color(255, 255, 255), 1f);
+			dust.noGravity = true;
+			dust.shader = GameShaders.Armor.GetSecondaryShader(19, Main.LocalPlayer);
+
 		}
 
 		public override void Kill(int timeLeft)

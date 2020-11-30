@@ -3,6 +3,7 @@ using Retribution.Items.Souls;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Retribution.Items.Materials;
 
 namespace Retribution.Items.Weapons.Ranger
 {
@@ -35,7 +36,7 @@ namespace Retribution.Items.Weapons.Ranger
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ModContent.ItemType<frozensoul>(), 5);
-			//recipe.AddIngredient(ModContent.ItemType<brokengun>(), 1);
+			recipe.AddIngredient(ModContent.ItemType<brokengun>(), 1);
 			//recipe.AddIngredient(ModContent.ItemType<residue>(), 1);
 			//recipe.AddTile(TileID.MysticForge);
 			recipe.SetResult(this);

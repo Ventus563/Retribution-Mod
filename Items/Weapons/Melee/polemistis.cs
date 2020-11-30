@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Retribution.Projectiles.Minions;
+using Retribution.Items.Materials;
 
 namespace Retribution.Items.Weapons.Melee
 {

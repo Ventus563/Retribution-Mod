@@ -10,12 +10,12 @@ namespace Retribution.Items.Weapons.Mage
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Wave Runner");
-			Tooltip.SetDefault("Creates a liquid beam to pulverize your enemies");
+			Tooltip.SetDefault("Generates a liquid beam to pulverize your enemies");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 1;
+			item.damage = 2;
 			item.channel = true;
 			item.magic = true;
 			item.mana = 2;
@@ -36,6 +36,7 @@ namespace Retribution.Items.Weapons.Mage
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Seashell, 5);
 			recipe.AddIngredient(ItemID.Starfish, 5);
+			recipe.AddIngredient(ItemID.Book);
 			//recipe.AddIngredient(mod, "waterspirit", 3);
 			recipe.needWater = true;
 			recipe.SetResult(this);

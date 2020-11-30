@@ -2,6 +2,7 @@ using Retribution.Items.Weapons.Ranger;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Retribution.Items.Materials;
 
 namespace Retribution.Items.StarterBags
 {

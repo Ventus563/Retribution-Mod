@@ -3,6 +3,7 @@ using Retribution.Items.Souls;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Retribution.Items.Materials;
 
 namespace Retribution.Items.Weapons.Mage
 {
@@ -35,7 +36,7 @@ namespace Retribution.Items.Weapons.Mage
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ModContent.ItemType<oceansoul>(), 5);
-			//recipe.AddIngredient(ModContent.ItemType<brokenstaff>(), 1);
+			recipe.AddIngredient(ModContent.ItemType<brokenstaff>(), 1);
 			//recipe.AddIngredient(ModContent.ItemType<residue>(), 1);
 			//recipe.AddTile(TileID.MysticForge);
 			recipe.SetResult(this);
