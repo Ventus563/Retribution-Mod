@@ -1,3 +1,8 @@
+using Retribution.Dusts;
+using Retribution.Buffs;
+using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Terraria.Graphics.Shaders;
 using Terraria;
 using Terraria.ID;
@@ -5,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace Retribution.Projectiles
 {
-	public class Sabretooth : ModProjectile
+	public class RottenRoundproj : ModProjectile
 	{
 
 		public override void SetDefaults()
@@ -24,7 +29,7 @@ namespace Retribution.Projectiles
         {
             if(player.altFunctionUse == 1)
 			{
-				target.AddBuff(BuffID.Ichor, 50);
+				target.AddBuff(BuffID.CursedInferno, 70);
 	
 		}
     
