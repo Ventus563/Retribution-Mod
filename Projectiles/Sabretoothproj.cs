@@ -20,4 +20,12 @@ namespace Retribution.Projectiles
             projectile.CloneDefaults(ProjectileID.LightDisc);
 		}
 	}
-}
+}       public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        {
+            if(player.altFunctionUse == 1)
+			{
+				target.AddBuff(BuffID.Ichor, 60);
+	
+		}
+    
+	}
