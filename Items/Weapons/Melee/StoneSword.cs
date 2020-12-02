@@ -1,6 +1,6 @@
-using Terraria
-using Terraria.ID
-using Terraria.ModLoader
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Retribution.Items.Weapons.Melee
 {
@@ -11,8 +11,6 @@ namespace Retribution.Items.Weapons.Melee
             DisplayName.SetDefault("Stone Sword")
 
             Tooltip.SetDefault("Fate of the stone")
-
-
         }
         public override void SetStaticDefaults()
         {
@@ -36,7 +34,6 @@ namespace Retribution.Items.Weapons.Melee
             recipe.AddIngredient(ItemID.StoneBlock, 10);
             recipe.AddTile(TileID.Workbeches, );
             recipe.SetResult(this);
-            recipe.needWater = false;
             recipe.AddRecipe();
         }
     }
