@@ -15,7 +15,7 @@ namespace Retribution.Items.Weapons.Reaper
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("GlacialSpire");
+			DisplayName.SetDefault("ArcticSpire");
 			Tooltip.SetDefault("A powerful ice scythe.");
 		}
 
