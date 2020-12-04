@@ -11,12 +11,12 @@ using Retribution.Projectiles.Minions;
 
 namespace Retribution.Items.Weapons.Reaper
 {
-	public class GlacialSpire : ReaperClass
+	public class ArcticSpire : ReaperClass
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("GlacialSpire");
-			Tooltip.SetDefault("A powerful ice scythe.");
+			DisplayName.SetDefault("Arctic Spire");
+			Tooltip.SetDefault("Ice cold to the touch");
 		}
 
 		public override void SafeSetDefaults()
