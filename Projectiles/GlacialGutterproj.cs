@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace Retribution.Projectiles
 {
-	public class GlacialSpireproj : ModProjectile
+	public class GlacialGutterproj : ModProjectile
 	{
         public override void SetDefaults()
 		{
