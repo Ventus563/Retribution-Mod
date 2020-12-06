@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Retribution.Items.Weapons.Melee
 {
-	public class StoneYoyo : ModItem
+	public class WaxWhiz : ModItem
 	{
 		public override void SetStaticDefaults() {
 
@@ -23,7 +23,7 @@ namespace Retribution.Items.Weapons.Melee
 			item.useTime = 25;
 			item.shootSpeed = 16f;
 			item.knockBack = 2.5f;
-			item.damage = 17;
+			item.damage = 28;
 			item.rare = ItemRarityID.White;
 
 			item.melee = true;
@@ -33,7 +33,7 @@ namespace Retribution.Items.Weapons.Melee
 
 			item.UseSound = SoundID.Item1;
 			item.value = Item.sellPrice(silver: 1);
-			item.shoot = ModContent.ProjectileType<StoneYoyoProjectile>();
+			item.shoot = ModContent.ProjectileType<WazWhizProjectile>();
 		}
 
 		// Make sure that your item can even receive these prefixes (check the vanilla wiki on prefixes)
