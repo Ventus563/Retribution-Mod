@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Retribution.Items.Materials;
+using static Terraria.ModLoader.ModContent;
 
 namespace Retribution.Items.Materials
 {
@@ -24,7 +25,7 @@ namespace Retribution.Items.Materials
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.IronOre, 3);
+            recipe.AddIngredient(ItemType<SteelBar>(), 3);
             recipe.AddIngredient(ItemID.FallenStar, 3);
             recipe.AddTile(TileID.Furnaces);
             recipe.SetResult(this);
