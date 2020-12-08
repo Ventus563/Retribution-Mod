@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Retribution.Projectiles
 {
-	public class StoneYoyoProjectile : ModProjectile
+	public class WaxWhizProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 
@@ -36,7 +36,7 @@ namespace Retribution.Projectiles
         {
             if(player.altFunctionUse == 1)
 			{
-				target.AddBuff(BuffID.Stoned, 5);
+				target.AddBuff(BuffID.Poisoned, 5);
 	
 		}
     
