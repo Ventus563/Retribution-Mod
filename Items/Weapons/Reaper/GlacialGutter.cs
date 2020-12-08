@@ -11,11 +11,11 @@ using Retribution.Projectiles.Minions;
 
 namespace Retribution.Items.Weapons.Reaper
 {
-	public class GlacialSpire : ReaperClass
+	public class GlacialGutter : ReaperClass
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("GlacialSpire");
+			DisplayName.SetDefault("GlacialGutter");
 			Tooltip.SetDefault("A powerful ice scythe.");
 		}
 

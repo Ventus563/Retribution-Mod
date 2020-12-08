@@ -12,7 +12,7 @@ Tooltip.SetDefault("A ocean repeater.");
 }
 public override void SetDefaults()
 {
-item.damage = 17;
+item.damage = 11;
 item.ranged = true;
 item.width = 54;
 item.height = 24;

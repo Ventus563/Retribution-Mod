@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace Retribution.Items.Weapons.Ranger
 {
-  public class Goblin_Bow : ModItem
+  public class Windbreaker : ModItem
   {
   public override void SetStaticDefaults()
   {
