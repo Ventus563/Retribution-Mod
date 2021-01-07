@@ -29,7 +29,7 @@ namespace Retribution.Items.Weapons.Ranger
 			item.rare = 0;
 			item.UseSound = SoundID.Item11;
 			item.shoot = 10;
-			item.shootSpeed = 16f;
+			item.shootSpeed = 36f;
 			item.useAmmo = AmmoID.Bullet;
 		}
 
