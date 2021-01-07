@@ -1,4 +1,4 @@
-using ExampleMod.Projectiles;
+using Retribution.Projectiles;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -23,7 +23,7 @@ namespace Retribution.Items.Weapons.Melee
 			item.useTime = 25;
 			item.shootSpeed = 16f;
 			item.knockBack = 2.5f;
-			item.damage =17;
+			item.damage = 17;
 			item.rare = ItemRarityID.White;
 
 			item.melee = true;

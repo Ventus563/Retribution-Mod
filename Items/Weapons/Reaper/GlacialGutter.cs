@@ -11,11 +11,11 @@ using Retribution.Projectiles.Minions;
 
 namespace Retribution.Items.Weapons.Reaper
 {
-	public class ArcticSpire : ReaperClass
+	public class GlacialGutter : ReaperClass
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("ArcticSpire");
+			DisplayName.SetDefault("GlacialGutter");
 			Tooltip.SetDefault("A powerful ice scythe.");
 		}
 
@@ -23,7 +23,7 @@ namespace Retribution.Items.Weapons.Reaper
 		{
 			item.channel = true;
 			item.maxStack = 1;
-			item.damage = 76;
+			item.damage = 11;
 			item.width = 56;
 			item.height = 48;
 			item.useTime = 20;
@@ -57,7 +57,7 @@ namespace Retribution.Items.Weapons.Reaper
 				item.melee = false;
 				item.autoReuse = true;
 				item.UseSound = SoundID.Item1;
-				item.shoot = ModContent.ProjectileType<ArcticSpireproj>();
+				item.shoot = ModContent.ProjectileType<GlacialGutterproj>();
 				item.shootSpeed = 25f;
 
 				soulCost = 2;
@@ -101,6 +101,8 @@ namespace Retribution.Items.Weapons.Reaper
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.IceBlock, 10);
+            recipe.AddIngredient(ItemID.SnowBlock, 30);
+            recipe.AddIngredient(ItemID.PlatinumBar, 5);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

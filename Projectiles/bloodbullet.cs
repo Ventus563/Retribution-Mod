@@ -16,9 +16,9 @@ namespace Retribution.Projectiles
 			DisplayName.SetDefault("Blood Bullet");
 		}
 		public override void SetDefaults()
-		{
+		{  		
 			projectile.width = 2;
-			projectile.height = 12;
+-			projectile.height = 12;
 			projectile.aiStyle = 0;
 			projectile.friendly = true;
 			projectile.ranged = true;
