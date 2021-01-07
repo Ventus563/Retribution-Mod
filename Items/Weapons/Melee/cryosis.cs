@@ -23,7 +23,7 @@ namespace Retribution.Items.Weapons.Melee
 		{
 			item.channel = true;
 			item.maxStack = 1;
-			item.damage = 15;
+			item.damage = 14;
 			item.crit = 2;
 			item.width = 34;
 			item.height = 40;
@@ -45,7 +45,7 @@ namespace Retribution.Items.Weapons.Melee
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.IceBlade, 1);
-			recipe.AddIngredient(ModContent.ItemType<frozensoul>(), 8);
+			recipe.AddIngredient(ModContent.ItemType<frozensoul>(), 15);
 			recipe.AddTile(TileID.Solidifier);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

@@ -65,7 +65,7 @@ namespace Retribution.Items
 			recipe.AddIngredient(null, "desertsoul", 5);
 			recipe.AddIngredient(null, "frozensoul", 5);
 			recipe.AddIngredient(null, "evilsoul", 5);
-			recipe.AddIngredient(null, "damnedsoul", 5);
+			recipe.AddIngredient(null, "hellfiresoul", 5);
 			recipe.AddIngredient(null, "cavernsoul", 5);
 			recipe.AddIngredient(null, "dungeonsoul", 5);
 			recipe.AddIngredient(null, "junglesoul", 5);

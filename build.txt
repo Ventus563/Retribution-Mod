@@ -1,3 +1,6 @@
 displayName = Retribution Mod
 author = Royal Nobody
 version = 0.1
+includePDB = false
+hideCode = true
+hideResources = true

@@ -12,12 +12,14 @@ namespace Retribution.Items.Weapons.Mage
 		{
 			DisplayName.SetDefault("Bow Staff");
 			Tooltip.SetDefault("Shoots spinning wooden bow to shoot arrows at your enemies");
+			Item.staff[item.type] = true;
+
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 42;
-			item.height = 42;
+			item.width = 64;
+			item.height = 64;
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.useTime = 23;
 			item.useAnimation = 23;

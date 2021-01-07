@@ -4,11 +4,12 @@ using Terraria.ModLoader;
 
 namespace Retribution.Items.Weapons.Melee
 {
-    public class RottenRound : ModItem
+	public class rottenround : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			Displayname.SetDefault("RottenRound");
+			DisplayName.SetDefault("Rotten Round");
+			Tooltip.SetDefault("Applies Cursed Flames to enemies");
 		}
 
 		public override void SetDefaults()
@@ -28,14 +29,14 @@ namespace Retribution.Items.Weapons.Melee
 			item.melee = true;
 			item.UseSound = SoundID.Item1;
 			item.useTurn = true;
-			item.shoot = mod.ProjectileType("RottenRoundproj");
+			item.shoot = mod.ProjectileType("rottenroundproj");
 			item.shootSpeed = 7f;
 		}
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.ShadowScale, 13);
-			recipe.AddIngredient(ItemID.DemoniteBar,11);
+			recipe.AddIngredient(ItemID.DemoniteBar, 11);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

@@ -7,7 +7,7 @@ using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Retribution.Projectiles.Minions;
+using Retribution.Projectiles;
 
 namespace Retribution.Items.Weapons.Reaper
 {
@@ -24,8 +24,8 @@ namespace Retribution.Items.Weapons.Reaper
 			item.channel = true;
 			item.maxStack = 1;
 			item.damage = 34;
-			item.width = 56;
-			item.height = 48;
+			item.width = 62;
+			item.height = 58;
 			item.useTime = 20;
 			item.useAnimation = 20;
 			item.useStyle = 1;
@@ -46,7 +46,7 @@ namespace Retribution.Items.Weapons.Reaper
 		{
 			var retributionPlayer = player.GetModPlayer<RetributionPlayer>();
 
-			if (player.altFunctionUse == 2 && retributionPlayer.soulCurrent >= 2)
+			if (player.altFunctionUse == 2 && retributionPlayer.soulCurrent >= 4)
 			{
 				item.useStyle = ItemUseStyleID.HoldingOut;
 				item.useTime = 20;
@@ -57,10 +57,11 @@ namespace Retribution.Items.Weapons.Reaper
 				item.melee = false;
 				item.autoReuse = true;
 				item.UseSound = SoundID.Item1;
-				item.shoot = ModContent.ProjectileType<GlacialSpireproj>();
-				item.shootSpeed = 25f;
+				item.shootSpeed = 15f;
+				item.CloneDefaults(ItemID.SkyFracture);
+				item.mana = 0;
 
-				soulCost = 2;
+				soulCost = 4;
 				
 			}
 			else {
@@ -85,14 +86,13 @@ namespace Retribution.Items.Weapons.Reaper
 			if (player.altFunctionUse == 2)
 			{
 				{
-					int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Fire, player.velocity.X * 0.2f + (float)(player.direction * 3), player.velocity.Y * 0.2f, 100, default(Color), 2.5f);
+					int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 59, player.velocity.X * 0.2f + (float)(player.direction * 3), player.velocity.Y * 0.2f, 100, default(Color), 2.5f);
 					Lighting.AddLight(item.Center, Color.Orange.ToVector3() * 0.98f);
 				}
 			}
 			else
 			{
-				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Fire, player.velocity.X * 0.2f + (float)(player.direction * 3), player.velocity.Y * 0.2f, 100, default(Color), 2.5f);
-				Main.dust[dust].noGravity = true;
+				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 59, player.velocity.X * 0.2f + (float)(player.direction * 3), player.velocity.Y * 0.2f, 100, default(Color), 2.5f);
 				Lighting.AddLight(item.Center, Color.Orange.ToVector3() * 0.98f);
 			}
 		}

@@ -292,21 +292,6 @@ namespace Retribution.NPCs.Bosses.Kane
             }
         }
 
-        private void Talk(string message)
-        {
-            message = "<" + npc.TypeName + "> " + message;
-            if (Main.netMode == 0)
-            {
-                string text = Language.GetTextValue("Mods.Bluemagic.NPCTalk", Lang.GetNPCNameValue(npc.type), message);
-                Main.NewText(text, 50, 150, 200);
-            }
-            else
-            {
-                NetworkText text = NetworkText.FromKey("Mods.Bluemagic.NPCTalk", Lang.GetNPCNameValue(npc.type), message);
-                NetMessage.BroadcastChatMessage(text, new Color(50, 150, 200));
-            }
-        }
-
         public override void NPCLoot()
         {
             if (Main.rand.Next(10) == 0)

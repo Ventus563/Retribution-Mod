@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace Retribution.Projectiles
 {
-	public class GlacialSpireproj : ModProjectile
+	public class arcticspireproj : ModProjectile
 	{
         public override void SetDefaults()
 		{
@@ -21,6 +21,7 @@ namespace Retribution.Projectiles
 			projectile.tileCollide = true;
 			projectile.penetrate = 2;
             projectile.alpha = 255;
+            projectile.CloneDefaults(ProjectileID.ShadowFlame);
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -28,7 +29,7 @@ namespace Retribution.Projectiles
             target.AddBuff(BuffID.Frozen, 60);
         }
 
-        public override void Kill(int timeLeft)
+        /*public override void Kill(int timeLeft)
         {
             Main.PlaySound(SoundID.Item27, (int)projectile.position.X, (int)projectile.position.Y);
             Vector2 usePos = projectile.position;
@@ -63,6 +64,6 @@ namespace Retribution.Projectiles
             }
 
             Lighting.AddLight(projectile.position, 0.9f, 0.9f, 1f);
-        }
+        }*/
     }
 }

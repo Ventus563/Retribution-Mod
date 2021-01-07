@@ -1,7 +1,7 @@
+using System;
 using System.IO;
 using System.Collections.Generic;
 using Terraria;
-using System;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Retribution.Items.Weapons.Ranger;
@@ -51,6 +51,30 @@ namespace Retribution
 				if (Main.rand.NextFloat() < .20f)
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("peeperstaff"), 1);
+				}
+			}
+
+			if (npc.type == NPCID.EyeofCthulhu && !Main.expertMode)
+			{
+				if (Main.rand.NextFloat() < .20f)
+				{
+					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("honeyray"), 1);
+				}
+			}
+
+			if (npc.type == NPCID.WallCreeper)
+			{
+				if (Main.rand.NextFloat() < .02f)
+				{
+					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("arachnoblaster"), 1);
+				}
+			}
+
+			if (npc.type == NPCID.WallCreeperWall)
+			{
+				if (Main.rand.NextFloat() < .02f)
+				{
+					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("arachnoblaster"), 1);
 				}
 			}
 
@@ -125,56 +149,56 @@ namespace Retribution
 			#region Souls
 			if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDesert)
 			{
-				if (Main.rand.NextFloat() < .08f)
+				if (Main.rand.NextFloat() < .05f)
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("desertsoul"));
 				}
 			}
 			if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow)
 			{
-				if (Main.rand.NextFloat() < .08f)
+				if (Main.rand.NextFloat() < .05f)
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("frozensoul"));
 				}
 			}
 			if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCorrupt)
 			{
-				if (Main.rand.NextFloat() < .08f)
+				if (Main.rand.NextFloat() < .05f)
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("evilsoul"));
 				}
 			}
 			if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCrimson)
 			{
-				if (Main.rand.NextFloat() < .08f)
+				if (Main.rand.NextFloat() < .05f)
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("evilsoul"));
 				}
 			}
 			if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneJungle)
 			{
-				if (Main.rand.NextFloat() < .08f)
+				if (Main.rand.NextFloat() < .05f)
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("junglesoul"));
 				}
 			}
 			if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneRockLayerHeight)
 			{
-				if (Main.rand.NextFloat() < .08f)
+				if (Main.rand.NextFloat() < .05f)
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("cavernsoul"));
 				}
 			}
 			if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)
 			{
-				if (Main.rand.NextFloat() < .08f)
+				if (Main.rand.NextFloat() < .05f)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("damnedsoul"));
+					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("hellfiresoul"));
 				}
 			}
 			if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDungeon)
 			{
-				if (Main.rand.NextFloat() < .08f)
+				if (Main.rand.NextFloat() < .05f)
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("dungeonsoul"));
 				}

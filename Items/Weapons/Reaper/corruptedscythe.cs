@@ -15,7 +15,7 @@ namespace Retribution.Items.Weapons.Reaper
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Corrupted Scythe");
+			DisplayName.SetDefault("Dark Lesion Blade");
 			Tooltip.SetDefault("Shoots a firey ghast to eat your enemies\nCosts 5 soul fragments");
 		}
 
@@ -46,7 +46,7 @@ namespace Retribution.Items.Weapons.Reaper
 		{
 			var retributionPlayer = player.GetModPlayer<RetributionPlayer>();
 
-			if (player.altFunctionUse == 2 && retributionPlayer.soulCurrent >= 2)
+			if (player.altFunctionUse == 2 && retributionPlayer.soulCurrent >= 4)
 			{
 				item.useStyle = ItemUseStyleID.HoldingOut;
 				item.useTime = 20;
@@ -60,7 +60,7 @@ namespace Retribution.Items.Weapons.Reaper
 				item.shoot = mod.ProjectileType("shadowball");
 				item.shootSpeed = 3f;
 
-				soulCost = 5;
+				soulCost = 4;
 				
 			}
 			else {

@@ -2,9 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 
 namespace Retribution {
-/*
- * Contains code for ellipse collision detection
- */
+
 public class Ellipse
 {
     public static bool Collides(Vector2 ellipsePos, Vector2 ellipseDim, Vector2 boxPos, Vector2 boxDim)

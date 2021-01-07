@@ -25,6 +25,7 @@ namespace Retribution
         public static bool downedVilacious = false;
         public static bool downedSanguine = false;
         public static bool downedKane = false;
+        public static bool downedMorbus = false;
         #endregion
 
         #region Save/Load
@@ -69,6 +70,7 @@ namespace Retribution
             if (ShiniesIndex != -1) {
 
                 tasks.Insert(ShiniesIndex + 1, new PassLegacy("Rubidium", Rubidium));
+                tasks.Insert(ShiniesIndex + 1, new PassLegacy("Kyanite", Kyanite));
             }
 
             /*int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Jungle"));
@@ -98,7 +100,7 @@ namespace Retribution
         public override void PostWorldGen()
         {
             int[] itemsToPlaceInChests = { ModContent.ItemType<scratchedmirror>()};
-            int itemsToPlaceInChestsChoice = 5;
+            int itemsToPlaceInChestsChoice = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
                 Chest chest = Main.chest[chestIndex];
@@ -108,11 +110,14 @@ namespace Retribution
                     for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
                         {
-                            if (chest.item[inventoryIndex].type == ItemID.None)
+                            if (Main.rand.NextFloat() < .25f)
                             {
-                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInChests));
-                                itemsToPlaceInChestsChoice = (itemsToPlaceInChestsChoice + 1) % itemsToPlaceInChests.Length;
-                                break;
+                                if (chest.item[inventoryIndex].type == ItemID.None)
+                                {
+                                    chest.item[inventoryIndex].SetDefaults(itemsToPlaceInChests[itemsToPlaceInChestsChoice]);
+                                    itemsToPlaceInChestsChoice = (itemsToPlaceInChestsChoice + 1) % itemsToPlaceInChests.Length;
+                                    break;
+                                }
                             }
                         }
                     }
@@ -130,6 +135,19 @@ namespace Retribution
                 int y = WorldGen.genRand.Next((int)WorldGen.worldSurfaceLow, Main.maxTilesY);
 
                 WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 6), WorldGen.genRand.Next(2, 6), ModContent.TileType<rubidium>());
+            }
+        }
+
+        private void Kyanite(GenerationProgress progress)
+        {
+            progress.Message = "Generating Kyanite";
+
+            for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY) * 3E-05); k++)
+            {
+                int x = WorldGen.genRand.Next(0, Main.maxTilesX);
+                int y = WorldGen.genRand.Next((int)WorldGen.worldSurfaceLow, Main.maxTilesY);
+
+                WorldGen.TileRunner(x, y, WorldGen.genRand.Next(5, 8), WorldGen.genRand.Next(4, 8), ModContent.TileType<kyanite>());
             }
         }
 

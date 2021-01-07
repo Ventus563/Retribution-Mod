@@ -35,6 +35,8 @@ namespace Retribution
 				soulbar = new soulbar();
 				_soulbarUserInterface = new UserInterface();
 				_soulbarUserInterface.SetState(soulbar);
+
+				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/cursedprotector"), ItemType("CursedProtector"), TileType("CursedProtectorBox"));
 			}
 		}
 
@@ -63,6 +65,7 @@ namespace Retribution
 		{
 			var slots = new int[] {
 				GetSoundSlot(SoundType.Music, "Sounds/Music/moss"),
+				GetSoundSlot(SoundType.Music, "Sounds/Music/cursedprotector"),
 				GetSoundSlot(SoundType.Music, "Sounds/Music/kane")
 			};
 			foreach (var slot in slots)
@@ -114,17 +117,17 @@ namespace Retribution
 			{
 				bossChecklist.Call(
 					"AddBoss",
-					9.5f,
-					ModContent.NPCType<NPCs.Bosses.Kane.Kane>(),
+					7f,
+					ModContent.NPCType<NPCs.Bosses.Morbus.Morbus>(),
 					this,
-					"Kāne, the God of Life",
-					(Func<bool>)(() => RetributionWorld.downedKane),
-					ModContent.ItemType<Items.mysterioustikitotem>(),
+					"Morbus",
+					(Func<bool>)(() => RetributionWorld.downedMorbus),
+					ModContent.ItemType<Items.Summons.rottenfang>(),
 					new List<int> { ModContent.ItemType<Items.scythemold>(), ModContent.ItemType<Items.scythemold>() },
 					new List<int> { ModContent.ItemType<Items.scythemold>(), ModContent.ItemType<Items.scythemold>() },
-					"Can be summoned any time of day in the Jungle",
+					"Can be summoned at night time in the Corruption",
 					"",
-					"Retribution/NPCs/Bosses/Kane/Kane_Boss");
+					"Retribution/NPCs/Bosses/Morbus/Morbus_Thumb");
 
 				bossChecklist.Call(
 					"AddMiniBoss",

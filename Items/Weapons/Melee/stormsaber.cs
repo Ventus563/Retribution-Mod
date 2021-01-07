@@ -7,6 +7,11 @@ using Terraria.Localization;
 using Microsoft.Xna.Framework.Graphics;
 using Retribution.Items.Weapons;
 using System;
+using System.IO;
+using Retribution;
+using Terraria.GameContent.Events;
+using Terraria.ModLoader.IO;
+using Retribution.Projectiles.Minions;
 
 namespace Retribution.Items.Weapons.Melee
 {
@@ -29,7 +34,7 @@ namespace Retribution.Items.Weapons.Melee
             item.noUseGraphic = true;
             item.noMelee = true;
             item.useStyle = 5;
-            item.knockBack = 6;
+            item.knockBack = 0;
             item.value = Item.buyPrice(0, 22, 50, 0);
             item.rare = 9;
             item.UseSound = SoundID.Item1;
@@ -88,7 +93,12 @@ namespace Retribution.Items.Weapons.Melee
                 projectile.velocity.Y = 16f;
             }
             if (projectile.spriteDirection == -1)
+            {
                 projectile.rotation += MathHelper.Pi;
+            }
+
+            Lighting.AddLight(projectile.position, 0f, 0.93f, 0.93f);
+
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

@@ -4,17 +4,18 @@ using Terraria.ModLoader;
 
 namespace Retribution.Items.Weapons.Melee
 {
-    public class Sabretooth : ModItem
+	public class sabretooth : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			Displayname.SetDefault("Sabretooth");
+			DisplayName.SetDefault("Sabretooth");
+			Tooltip.SetDefault("Applies Cursed Ichor to enemies");
 		}
 
 		public override void SetDefaults()
 		{
 			item.maxStack = 1;
-			item.damage = 23;
+			item.damage = 18;
 			item.width = 38;
 			item.height = 38;
 			item.useTime = 23;
@@ -28,7 +29,7 @@ namespace Retribution.Items.Weapons.Melee
 			item.melee = true;
 			item.UseSound = SoundID.Item1;
 			item.useTurn = true;
-			item.shoot = mod.ProjectileType("Sabretoothproj");
+			item.shoot = mod.ProjectileType("sabretoothproj");
 			item.shootSpeed = 7f;
 		}
 		public override void AddRecipes()
@@ -36,7 +37,6 @@ namespace Retribution.Items.Weapons.Melee
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.TissueSample, 10);
 			recipe.AddIngredient(ItemID.CrimtaneBar, 8);
-            recipe.AddIngredient(ItemID.Vertebra, 4);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

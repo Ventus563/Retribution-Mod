@@ -31,7 +31,7 @@ namespace Retribution.Tiles
 			drop = ModContent.ItemType<Items.Blocks.rubidiumore>();
 			soundType = SoundID.Tink;
 			soundStyle = 1;
-			minPick = 65;
+			minPick = 35;
 		}
 	}
 }

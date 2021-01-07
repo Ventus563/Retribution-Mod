@@ -11,6 +11,8 @@ using System.Linq;
 using Retribution.Items.Weapons.Reaper;
 using Retribution.Items.Weapons.Melee;
 using Retribution.Items.Weapons.Summoner;
+using Retribution.Items.Weapons.Mage;
+using Retribution.Items.Weapons.Ranger;
 using Retribution.Items.Accessories;
 
 namespace Retribution
@@ -45,6 +47,14 @@ namespace Retribution
 				if (Main.expertMode && Main.rand.NextFloat() < .25f)
 				{
 					player.QuickSpawnItem(ModContent.ItemType<reaperemblem>());
+				}
+			}
+
+			if (context == "bossBag" && arg == ItemID.QueenBeeBossBag)
+			{
+				if (Main.rand.NextFloat() < .33f)
+				{
+					player.QuickSpawnItem(ModContent.ItemType<honeyray>());
 				}
 			}
 		}

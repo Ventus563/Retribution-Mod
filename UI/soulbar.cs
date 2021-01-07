@@ -40,8 +40,8 @@ namespace Retribution.UI
 			text.Top.Set(40, 0f);
 			text.Left.Set(0, 0f);
 
-			gradientA = new Color(123, 25, 138); // A dark purple
-			gradientB = new Color(187, 91, 201); // A light purple
+			gradientA = new Color(165, 165, 165); // A dark purple
+			gradientB = new Color(240, 240, 240); // A light purple
 
 			area.Append(text);
 			area.Append(barFrame);
@@ -68,7 +68,7 @@ namespace Retribution.UI
 
 			// Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.
 			Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
-			hitbox.X += 12;
+			hitbox.X += 38;
 			hitbox.Width -= 24;
 			hitbox.Y += 8;
 			hitbox.Height -= 16;

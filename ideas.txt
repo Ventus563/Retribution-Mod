@@ -5,14 +5,33 @@ Death Bringer's Blade
 Okatski
 Grot
 Perforater
+Willow Wreathe
+Jungle scythe- right click puts a lifesteal aura at mouse position
+Web Weaver
+Maelstrom - Upgraded Whirlpool
+Cursed Fountain - Magic weapons dropped from Morbus, does his cursed spit attack
 
 -- Spell Tomes --
 Tale of Two Evils
 Wall of Fire
 
 -- Bosses --
-Ocean- Covina- Giant Seadolphin
-Sky- Harpy Queen- Bullet Hell
+Biome Guardians
 
 -- Mounts --
 Magic Bubble- infinite flying, really slow
+
+-- NPCs --
+Town NPC that gives quests to collect a certain number of items
+
+--- Movesets ---
+
+- Sanctifica -
+Starts shielded by eyes. Eyes periodically shoot lasers at player
+When an eye is destroyed, it explodes in a bullet-hell fashion, shooting "bullets" everywhere
+When Sanctifica is able to be hit, she will fly around and periodically shoot spears at the player in an undertale fashion
+Another attack will have Sanctifica fly into the sky and then fly down really fast into a player and deal massive damage. (there will be a highlight where she will fly into)
+About 15 seconds later, the eyes will return to protect Sanctifica.
+When she is below 50% health, she becomes enraged. Eyes will no longer protect her, and instead will float above her head periodically shooting channeled lasers at the player
+She will shoot spears faster.
+When she is below 25% health, she will periodically have a bullet-hell attack, previous enraged attacks will still occur.
