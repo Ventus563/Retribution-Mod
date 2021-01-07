@@ -11,7 +11,7 @@ namespace Retribution.Items.Weapons.Ranger
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Auto Rifle");
+			DisplayName.SetDefault("Wildthorn");
 		}
 
 		public override void SetDefaults()
