@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Retribution.Items.Weapons
+namespace Retribution.Items.Weapons.Mage
 {
 	public class WaspWand : ModItem
 	{
@@ -32,9 +32,10 @@ namespace Retribution.Items.Weapons
 			item.shootSpeed = 16f;
 		}
 
-		public override void AddRecipes() {
+		public override void AddRecipes()
+		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<BeeWax>(), 10);
+			recipe.AddIngredient(ItemID.BeeWax, 10);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
