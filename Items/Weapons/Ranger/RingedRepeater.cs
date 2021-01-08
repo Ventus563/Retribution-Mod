@@ -1,5 +1,9 @@
+using Retribution.Projectiles;
+using Retribution.Items.Souls;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace Retribution.Items.Weapons.Ranger
 {
@@ -26,7 +30,7 @@ item.rare = 4;
 item.UseSound = SoundID.Item5;
 item.noMelee = true;
 item.shoot = 1;
-item.useAmmo = AmmoID.Arrow;
+item.useAmmo = AmmoID.Bullet;
 item.shootSpeed = 5f;
 item.autoReuse = true;
 }
