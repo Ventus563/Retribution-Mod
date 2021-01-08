@@ -41,6 +41,6 @@ namespace Retribution.Items.Weapons.Ranger
 			recipe.AddTile(TileID.WorkBench);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}
-	}
+        }
+    }
 }

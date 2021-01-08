@@ -49,7 +49,7 @@ namespace Retribution.Items.Weapons.Ranger
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Cloud, 30);
-			recipe.AddIngredient(ItemID.Feather, 15)
+			recipe.AddIngredient(ItemID.Feather, 15);
 			///recipe.AddIngredient(ModContent.ItemType<SkySoul>())
 			recipe.AddTile(TileID.IronAnvil);
 			recipe.SetResult(this);
