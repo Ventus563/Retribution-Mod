@@ -10,7 +10,7 @@ namespace Retribution.Items.Weapons.Mage
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Acheron");
+			DisplayName.SetDefault("Archareon");
 			Tooltip.SetDefault("Unleashes a fiery waterfall");
 		}
 

@@ -23,7 +23,7 @@ namespace Retribution.NPCs.Bosses.Morbus
         {
             npc.aiStyle = -1;
             npc.lifeMax = 12000;
-            npc.damage = 0;
+            npc.damage = 25;
             npc.defense = 16;
             npc.knockBackResist = 0f;
             npc.width = 100;
@@ -75,7 +75,8 @@ namespace Retribution.NPCs.Bosses.Morbus
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = 12000 * numPlayers / 2 + 5000;
+            npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.6f);
         }
 
         public override void AI()
@@ -103,6 +104,25 @@ namespace Retribution.NPCs.Bosses.Morbus
             #endregion
 
             #region Behavior
+
+            #region Despawn
+            Player player = Main.player[npc.target];
+
+            if (!player.active || player.dead)
+            {
+                npc.TargetClosest(false);
+                player = Main.player[npc.target];
+                if (!player.active || player.dead)
+                {
+                    npc.velocity = new Vector2(0f, 10f);
+                    if (npc.timeLeft > 30)
+                    {
+                        npc.timeLeft = 30;
+                    }
+                    return;
+                }
+            }
+            #endregion 
 
             #region Enrage Trigger
             if (npc.life <= npc.lifeMax / 2)

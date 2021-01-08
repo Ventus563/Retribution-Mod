@@ -1,15 +1,22 @@
-using Retribution.Projectiles;
 using System;
+using System.IO;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Retribution;
+using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
+using Retribution.Projectiles;
+using Retribution.Items.Souls;
 
 namespace Retribution.Items.Weapons.Melee
 {
-	public class WaxWhiz : ModItem
+	public class waxwhiz : ModItem
 	{
 		public override void SetStaticDefaults() {
 
+			DisplayName.SetDefault("Wax Whiz");
 			ItemID.Sets.Yoyo[item.type] = true;
 			ItemID.Sets.GamepadExtraRange[item.type] = 15;
 			ItemID.Sets.GamepadSmartQuickReach[item.type] = true;
@@ -23,7 +30,7 @@ namespace Retribution.Items.Weapons.Melee
 			item.useTime = 25;
 			item.shootSpeed = 16f;
 			item.knockBack = 2.5f;
-			item.damage = 28;
+			item.damage = 19;
 			item.rare = ItemRarityID.White;
 
 			item.melee = true;
@@ -33,35 +40,17 @@ namespace Retribution.Items.Weapons.Melee
 
 			item.UseSound = SoundID.Item1;
 			item.value = Item.sellPrice(silver: 1);
-			item.shoot = ModContent.ProjectileType<WazWhizProjectile>();
+			item.shoot = ModContent.ProjectileType<waxwhizproj>();
 		}
 
-		// Make sure that your item can even receive these prefixes (check the vanilla wiki on prefixes)
-		// These are the ones that reduce damage of a melee weapon
 		private static readonly int[] unwantedPrefixes = new int[] { PrefixID.Terrible, PrefixID.Dull, PrefixID.Shameful, PrefixID.Annoying, PrefixID.Broken, PrefixID.Damaged, PrefixID.Shoddy};
 
 		public override bool AllowPrefix(int pre) {
-			// return false to make the game reroll the prefix
-
-			// DON'T DO THIS BY ITSELF:
-			// return false;
-			// This will get the game stuck because it will try to reroll every time. Instead, make it have a chance to return true
 
 			if (Array.IndexOf(unwantedPrefixes, pre) > -1) {
-				// IndexOf returns a positive index of the element you search for. If not found, it's less than 0. Here check the opposite
-				// Rolled a prefix we don't want, reroll
 				return false;
 			}
-			// Don't reroll
 			return true;
-		}
-
-		public override void AddRecipes() {
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.WoodYoyo);
-            recipe.AddIngredient(ItemsID.StoneBlock, 20);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
 		}
 	}
 }

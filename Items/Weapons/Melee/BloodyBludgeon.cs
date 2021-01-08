@@ -9,6 +9,11 @@ namespace Retribution.Items.Weapons.Melee
 {
     public class BloodyBludgeon : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Crimtane Bludgeon");
+        }
+
         public override void SetDefaults()
         {
             item.width = 60;
@@ -49,11 +54,17 @@ namespace Retribution.Items.Weapons.Melee
             projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
+            projectile.alpha = 255;
             projectile.melee = true;
         }
 
         public override void AI()
         {
+            Dust dust;
+            Vector2 position = projectile.Center;
+            dust = Terraria.Dust.NewDustPerfect(position, 127, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 2f);
+            dust.noGravity = true;
+
             // Set some variables
             float num = 50f;
             float num2 = 2f;
@@ -122,12 +133,6 @@ namespace Retribution.Items.Weapons.Melee
             Vector2 dustVector1 = projectile.Center + (rotationValue + ((sign == -1) ? ((float)Math.PI) : 0f)).ToRotationVector2() * 30f;
             Vector2 dustPosition = rotationValue.ToRotationVector2();
             Vector2 dustVector2 = dustPosition.RotatedBy((float)Math.PI / 2f * (float)projectile.spriteDirection);
-            // Spawn Dust every 1 in 2 times
-            if(Main.rand.Next(2) == 0)
-            {
-                Dust dust = Dust.NewDustDirect(dustVector1 - new Vector2(5f), 10, 10, DustID.Fire, player.velocity.X, player.velocity.Y, 150);
-                dust.velocity = projectile.DirectionTo(dust.position) * 0.1f + dust.velocity * 0.1f;
-            }
             // Loop through 4 times to create dust
             for(int i = 0; i < 4; i++)
             {
