@@ -44,5 +44,16 @@ namespace Retribution.Items.Weapons.Ranger
 			Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<WindWave>(), damage, knockBack, player.whoAmI, 0f, 0f);
 			return false;
 		}
-    }
+    
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.Cloud, 30);
+			recipe.AddIngredient(ItemID.Feather, 15)
+			///recipe.AddIngredient(ModContent.ItemType<SkySoul>())
+			recipe.AddTile(TileID.IronAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+	}
 }
