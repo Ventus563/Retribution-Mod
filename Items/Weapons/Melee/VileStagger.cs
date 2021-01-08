@@ -29,7 +29,7 @@ namespace Retribution.Items.Weapons.Melee
 
             item.useStyle = ItemUseStyleID.HoldingOut;
 
-            item.shoot = ModContent.ProjectileType<VileStaggerProj>();
+            item.shoot = ModContent.ProjectileType<VileStaggerProjectile>();
             item.shootSpeed = 5f;
         }
 
@@ -40,7 +40,7 @@ namespace Retribution.Items.Weapons.Melee
 
     }
 
-    public class VileStaggerProj: ModProjectile
+    public class VileStaggerProjectile: ModProjectile
     {
         public override void SetDefaults()
         {
