@@ -177,5 +177,14 @@ namespace Retribution.Items.Weapons.Melee
             player.itemAnimation = 2;
             player.itemRotation = MathHelper.WrapAngle(projectile.rotation);
         }
-    }
+        public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.DemoniteBar, 12);
+            recipe.AddIngredient(ItemID.ShadowScale, 20)
+			recipe.AddTile(TileID.WorkBench);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+	}
 }
