@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -35,7 +35,6 @@ namespace Retribution.NPCs.Bosses.Locus
             npc.noTileCollide = true;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.DD2_BetsyScream;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/locust");
 
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -58,6 +57,7 @@ namespace Retribution.NPCs.Bosses.Locus
         private int bulletTimer;
         private int dashTimer;
         private int soundCount = 0;
+        private int summonTimer;
 
 		public int counter;
 		public int flux;
@@ -229,7 +229,7 @@ namespace Retribution.NPCs.Bosses.Locus
 			}
             #endregion
 
-            /*#region Lightning Bolt
+            #region Lightning Bolt
             bulletTimer++;
             if (bulletTimer >= 180 && Main.rand.NextFloat() < .15f)
             {
@@ -238,8 +238,8 @@ namespace Retribution.NPCs.Bosses.Locus
                 stateShoot = true;
                 stateBlink = false;
 
-                Projectile.NewProjectile(npc.Center.X + -100, npc.Center.Y + - -100 - +60, 0, 20, ModContent.ProjectileType<LightningBolt>(), 200, 0f, Main.myPlayer, npc.whoAmI, 200);
-                Projectile.NewProjectile(npc.Center.X + - -100, npc.Center.Y + - -100 - +60, 0, 20, ModContent.ProjectileType<LightningBolt>(), 200, 0f, Main.myPlayer, npc.whoAmI, 200);
+                Projectile.NewProjectile(npc.Center.X + -100, npc.Center.Y + - -100 -  0, 20, ModContent.ProjectileType<LightningBolt>(), 30, 0f, Main.myPlayer, npc.whoAmI, 30);
+                Projectile.NewProjectile(npc.Center.X + - -100, npc.Center.Y + - -100 -  0, 20, ModContent.ProjectileType<LightningBolt>(), 30, 0f, Main.myPlayer, npc.whoAmI, 30);
 
                 bulletTimer = 0;
                 phaseCount = 2;
@@ -248,24 +248,19 @@ namespace Retribution.NPCs.Bosses.Locus
                 stateShoot = false;
             }
             #endregion
+            #region Summon
+            summonTimer++;
 
-            #region Tornado
-            bulletTimer++;
-            if (bulletTimer >= 180 && Main.rand.NextFloat() < .15f)
+            if (summonTimer >= 300 && stateEnraged == false)
             {
+                NPC.NewNPC((int)npc.Center.X + 20, (int)npc.Center.Y, ModContent.NPCType<MiniLocus>());
+                summonTimer = 0;
+            }
 
-                stateIdle = false;
-                stateShoot = true;
-                stateBlink = false;
-
-                Projectile.NewProjectile(npc.Center.X + -100, npc.Center.Y + - -100 - 60, 0, 0, ModContent.ProjectileType<Tornado>(), 200, 0f, Main.myPlayer, npc.whoAmI, 200);
-                Projectile.NewProjectile(npc.Center.X + - -100, npc.Center.Y + - -100 - 60, 0, 0, ModContent.ProjectileType<Tornado>(), 200, 0f, Main.myPlayer, npc.whoAmI, 200);
-
-                bulletTimer = 0;
-                phaseCount = 2;
-                stateIdle = true;
-                stateBlink = false;
-                stateShoot = false;
+            if (summonTimer >= 120 && stateEnraged == true)
+            {
+                NPC.NewNPC((int)npc.Center.X + 20, (int)npc.Center.Y, ModContent.NPCType<MiniLocus>());
+                summonTimer = 0;
             }
             #endregion
 
@@ -306,15 +301,16 @@ namespace Retribution.NPCs.Bosses.Locus
             if (npc.alpha == 0 && phaseCount == 1)
             {
                 Main.PlaySound(SoundID.DD2_BetsyScream, (int)npc.position.X, (int)npc.position.Y);
-                Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 60, 2, 0, ModContent.ProjectileType<LightningBolt>(), 200, 0f, Main.myPlayer, npc.whoAmI, 200);
-                Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 60, -2, 0, ModContent.ProjectileType<LightningBolt>(), 200, 0f, Main.myPlayer, npc.whoAmI, 200);
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 60, 2, 0, ModContent.ProjectileType<LightningBolt>(), 30, 0f, Main.myPlayer, npc.whoAmI, 30);
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 60, -2, 0, ModContent.ProjectileType<LightningBolt>(), 30, 0f, Main.myPlayer, npc.whoAmI, 30);
 
                 phaseCount = 2;
                 stateIdle = true;
                 stateBlink = false;
                 stateShoot = false;
 
-            }*/
+            }
+            #endregion
         }
         public override void FindFrame(int frameHeight)
         {
@@ -496,4 +492,3 @@ namespace Retribution.NPCs.Bosses.Locus
         }
     }
 }
-
