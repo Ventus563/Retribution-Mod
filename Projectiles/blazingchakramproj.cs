@@ -51,6 +51,8 @@ namespace Retribution.Projectiles
             return false;
         }
 
+
+
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.OnFire, 120);
@@ -114,7 +116,7 @@ namespace Retribution.Projectiles
             }
             float num134 = projectile.position.X;
             float num135 = projectile.position.Y;
-            float num136 = 300f;
+            float num136 = 1000f;
             bool flag3 = false;
             int num137 = 0;
             if (projectile.ai[1] == 0f)

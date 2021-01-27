@@ -11,8 +11,8 @@ namespace Retribution.Items.StarterBags
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Grimly Bag");
-			Tooltip.SetDefault("Contains Reaper class items\n{$CommonItemTooltip.RightClickToOpen}");
+			DisplayName.SetDefault("Necromancer's Bag");
+			Tooltip.SetDefault("Contains Necromancer class items\n{$CommonItemTooltip.RightClickToOpen}");
 		}
 
 		public override void SetDefaults()

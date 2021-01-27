@@ -12,6 +12,8 @@ namespace Retribution.Items.Weapons.Mage
 		{
 			DisplayName.SetDefault("Frostbite");
 			Tooltip.SetDefault("Shoots spinning ice crystal that explodes into shards");
+			Item.staff[item.type] = true;
+
 		}
 
 		public override void SetDefaults()

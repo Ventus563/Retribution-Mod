@@ -11,7 +11,7 @@ namespace Retribution.Items.Accessories
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Reaper Emblem");
+			DisplayName.SetDefault("Necromancer Emblem");
 			Tooltip.SetDefault("15% increased soul damage");
 		}
 

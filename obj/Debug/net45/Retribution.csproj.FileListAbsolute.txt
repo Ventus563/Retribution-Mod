@@ -30,3 +30,6 @@ C:\Users\Christian Hathaway\Documents\My Games\Terraria\ModLoader\Mod Sources\Re
 C:\Users\Christian Hathaway\Documents\My Games\Terraria\ModLoader\Mod Sources\Retribution\obj\Debug\net45\Retribution.csproj.CopyComplete
 C:\Users\Christian Hathaway\Documents\My Games\Terraria\ModLoader\Mod Sources\Retribution\obj\Debug\net45\Retribution.dll
 C:\Users\Christian Hathaway\Documents\My Games\Terraria\ModLoader\Mod Sources\Retribution\obj\Debug\net45\Retribution.pdb
+C:\Users\Christian Hathaway\Documents\My Games\Terraria\ModLoader\Mod Sources\Retribution\bin\Debug\net45\StructureHelper.XNA.dll
+C:\Users\Christian Hathaway\Documents\My Games\Terraria\ModLoader\Mod Sources\Retribution\bin\Debug\net45\SubworldLibrary.dll
+C:\Users\Christian Hathaway\Documents\My Games\Terraria\ModLoader\Mod Sources\Retribution\bin\Debug\net45\SubworldLibrary.xml

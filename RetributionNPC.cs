@@ -20,7 +20,11 @@ namespace Retribution
 {
 	public class RetributionNPC : GlobalNPC
 	{
-		public override void HitEffect(NPC npc, int hitDirection, double damage)
+		public override bool InstancePerEntity => true;
+
+		public bool tFrost;
+
+        public override void HitEffect(NPC npc, int hitDirection, double damage)
 		{
 			var retributionPlayer = Main.LocalPlayer.GetModPlayer<RetributionPlayer>();
 
@@ -38,7 +42,16 @@ namespace Retribution
 			}
 		}
 
-		public override void NPCLoot(NPC npc)
+        public override void SetDefaults(NPC npc)
+        {
+			if (RetributionWorld.nightmareMode == true && npc.boss != true)
+			{
+				npc.damage = (npc.damage * 3) / 2;
+				npc.lifeMax = (npc.lifeMax * 3) / 2;
+			}
+        }
+
+        public override void NPCLoot(NPC npc)
 		{
 
 			if (npc.type == NPCID.EyeofCthulhu && !Main.expertMode)
@@ -212,6 +225,47 @@ namespace Retribution
 			{
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<autorifle>());
 				nextSlot++;
+			}
+		}
+
+		public override void ResetEffects(NPC npc)
+		{
+			tFrost = false;
+		}
+
+		public override void UpdateLifeRegen(NPC npc, ref int damage)
+		{
+			if (tFrost)
+			{
+				if (npc.lifeRegen > 0)
+				{
+					npc.lifeRegen = 0;
+				}
+				npc.lifeRegen -= 4;
+				if (damage < 2)
+				{
+					damage = 2;
+				}
+			}
+		}
+
+		public override void DrawEffects(NPC npc, ref Color drawColor)
+		{
+			if (tFrost)
+			{
+				if (Main.rand.Next(4) < 3)
+				{
+					int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 185, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color));
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].velocity *= 1.8f;
+					Main.dust[dust].velocity.Y -= 0.5f;
+					if (Main.rand.NextBool(4))
+					{
+						Main.dust[dust].noGravity = false;
+						Main.dust[dust].scale *= 0.05f;
+					}
+				}
+				Lighting.AddLight(npc.position, 0.1f, 0.1f, 0.7f);
 			}
 		}
 	}

@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace Retribution.Projectiles
 {
-	public class RottenRoundproj : ModProjectile
+	public class rottenroundproj : ModProjectile
 	{
 
 		public override void SetDefaults()

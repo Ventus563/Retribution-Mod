@@ -37,6 +37,7 @@ namespace Retribution.Items.Weapons.Melee
 			item.shoot = mod.ProjectileType("cactuschakramproj");
 			item.shootSpeed = 9f;
 		}
+
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
@@ -46,5 +47,17 @@ namespace Retribution.Items.Weapons.Melee
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
-	}
+
+        public override bool CanUseItem(Player player)
+        {
+			if (player.ownedProjectileCounts[item.shoot] == 2)
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+        }
+    }
 }

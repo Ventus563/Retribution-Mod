@@ -10,6 +10,10 @@ Jungle scythe- right click puts a lifesteal aura at mouse position
 Web Weaver
 Maelstrom - Upgraded Whirlpool
 Cursed Fountain - Magic weapons dropped from Morbus, does his cursed spit attack
+Hayabusa
+
+-- Tiles --
+Biome Forges - Dropped from biome guardians
 
 -- Spell Tomes --
 Tale of Two Evils

@@ -18,7 +18,7 @@ namespace Retribution.Items.Weapons.Melee
             item.useTime = 25;
 
             item.melee = true;
-            item.damage = 32;
+            item.damage = 39;
             item.knockBack = 5f;
 
             item.noMelee = true;
@@ -122,12 +122,6 @@ namespace Retribution.Items.Weapons.Melee
             Vector2 dustVector1 = projectile.Center + (rotationValue + ((sign == -1) ? ((float)Math.PI) : 0f)).ToRotationVector2() * 30f;
             Vector2 dustPosition = rotationValue.ToRotationVector2();
             Vector2 dustVector2 = dustPosition.RotatedBy((float)Math.PI / 2f * (float)projectile.spriteDirection);
-            // Spawn Dust every 1 in 2 times
-            if(Main.rand.Next(2) == 0)
-            {
-                Dust dust = Dust.NewDustDirect(dustVector1 - new Vector2(5f), 10, 10, DustID.Fire, player.velocity.X, player.velocity.Y, 150);
-                dust.velocity = projectile.DirectionTo(dust.position) * 0.1f + dust.velocity * 0.1f;
-            }
             // Loop through 4 times to create dust
             for(int i = 0; i < 4; i++)
             {

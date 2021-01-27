@@ -28,6 +28,8 @@ namespace Retribution
 
 		internal soulbar soulbar;
 
+		internal static Retribution mod;
+
 		public override void Load()
 		{
 			if (!Main.dedServ)
@@ -37,6 +39,13 @@ namespace Retribution
 				_soulbarUserInterface.SetState(soulbar);
 
 				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/cursedprotector"), ItemType("CursedProtector"), TileType("CursedProtectorBox"));
+			}
+
+			if (Main.netMode != NetmodeID.Server)
+			{
+				Ref<Effect> filterRef = new Ref<Effect>(GetEffect("Effects/RedScreen"));
+
+				Filters.Scene["RedScreen"] = new Filter(new ScreenShaderData(filterRef, "RedScreen"), EffectPriority.Medium);
 			}
 		}
 
@@ -66,6 +75,9 @@ namespace Retribution
 			var slots = new int[] {
 				GetSoundSlot(SoundType.Music, "Sounds/Music/moss"),
 				GetSoundSlot(SoundType.Music, "Sounds/Music/cursedprotector"),
+				GetSoundSlot(SoundType.Music, "Sounds/Music/tesca"),
+				GetSoundSlot(SoundType.Music, "Sounds/Music/locust"),
+				GetSoundSlot(SoundType.Music, "Sounds/Music/silva"),
 				GetSoundSlot(SoundType.Music, "Sounds/Music/kane")
 			};
 			foreach (var slot in slots)
@@ -99,7 +111,6 @@ namespace Retribution
 			int sunR = backgroundColor.R;
 			int sunG = backgroundColor.G;
 			int sunB = backgroundColor.B;
-			// Remove some green and more red.
 			sunR -= (int)(180f * exampleStrength * (backgroundColor.R / 255f));
 			sunB -= (int)(90f * exampleStrength * (backgroundColor.B / 255f));
 			sunR = Utils.Clamp(sunR, 15, 255);

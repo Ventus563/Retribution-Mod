@@ -21,16 +21,25 @@ namespace Retribution
     {
         public static int swampTiles = 0;
 
+        public static bool nightmareMode = false;
+
         #region Boss Checks
         public static bool downedVilacious = false;
         public static bool downedSanguine = false;
         public static bool downedKane = false;
         public static bool downedMorbus = false;
+        public static bool downedTesca = false;
         #endregion
 
         #region Save/Load
         public override TagCompound Save()
         {
+            var nightmare = new List<string>();
+            if (nightmareMode)
+            {
+                nightmare.Add("NightmareMode");
+            }
+
             var downed = new List<string>();
             if (downedKane)
             {
@@ -50,11 +59,15 @@ namespace Retribution
             return new TagCompound
             {
                 ["downed"] = downed,
+                ["nightmare"] = nightmare,
             };
         }
 
         public override void Load(TagCompound tag)
         {
+            var nightmare = tag.GetList<string>("nightmare");
+            nightmareMode = nightmare.Contains("NightmareMode");
+
             var downed = tag.GetList<string>("downed");
             downedKane = downed.Contains("Kane");
             downedSanguine = downed.Contains("Sanguine");

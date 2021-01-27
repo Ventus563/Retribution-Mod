@@ -57,6 +57,7 @@ namespace Retribution.NPCs.Bosses.Morbus
 
         public override void AI()
         {
+            projectile.netUpdate = true;
             Lighting.AddLight(projectile.position, 0.8f, 0.8f, 0.8f);
 
             projectile.spriteDirection = projectile.direction;

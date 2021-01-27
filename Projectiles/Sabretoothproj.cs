@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace Retribution.Projectiles
 {
-	public class Sabretoothproj : ModProjectile
+	public class sabretoothproj : ModProjectile
 	{
 
 		public override void SetDefaults()

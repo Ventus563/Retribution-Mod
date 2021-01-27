@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Retribution.Items.Weapons.Melee
 {
-	public class RottenRound : ModItem
+	public class rottenround : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -32,6 +32,19 @@ namespace Retribution.Items.Weapons.Melee
 			item.shoot = mod.ProjectileType("rottenroundproj");
 			item.shootSpeed = 7f;
 		}
+
+		public override bool CanUseItem(Player player)
+		{
+			if (player.ownedProjectileCounts[item.shoot] == 2)
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

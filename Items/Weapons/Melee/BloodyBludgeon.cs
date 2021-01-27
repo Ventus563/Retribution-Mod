@@ -9,11 +9,6 @@ namespace Retribution.Items.Weapons.Melee
 {
     public class BloodyBludgeon : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Crimtane Bludgeon");
-        }
-
         public override void SetDefaults()
         {
             item.width = 60;
@@ -23,8 +18,8 @@ namespace Retribution.Items.Weapons.Melee
             item.useTime = 25;
 
             item.melee = true;
-            item.damage = 32;
-            item.knockBack = 5f;
+            item.damage = 28;
+            item.knockBack = 1f;
 
             item.noMelee = true;
             item.noUseGraphic = true;
@@ -54,17 +49,11 @@ namespace Retribution.Items.Weapons.Melee
             projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            projectile.alpha = 255;
             projectile.melee = true;
         }
 
         public override void AI()
         {
-            Dust dust;
-            Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 127, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 2f);
-            dust.noGravity = true;
-
             // Set some variables
             float num = 50f;
             float num2 = 2f;
@@ -82,17 +71,17 @@ namespace Retribution.Items.Weapons.Melee
             }
             // Handle Lighting Effects
             Lighting.AddLight(player.Center, 0.75f, 0.2f, 0.3f);
-            
+
             // Get the Sign of Velocity X
             int sign = Math.Sign(projectile.velocity.X);
             // Ensure that the Y velocity is zero;
             projectile.velocity = new Vector2(sign, 0f);
             // Set Rotation at start of AI
-            if(projectile.ai[0] == 0f)
+            if (projectile.ai[0] == 0f)
             {
                 projectile.rotation = new Vector2(sign, 0f - player.gravDir).ToRotation() + quarterPi + (float)Math.PI;
                 // Reverse Direction is less than 0
-                if(projectile.velocity.X < 0f)
+                if (projectile.velocity.X < 0f)
                 {
                     projectile.rotation -= (float)Math.PI / 2f;
                 }
@@ -105,20 +94,21 @@ namespace Retribution.Items.Weapons.Melee
             // Check if a rotation is done
             bool isDone = projectile.ai[0] == (num / 2f);
             // Check if projectile is done with its rotations
-            if(projectile.ai[0] >= num || (isDone && !player.controlUseItem))
+            if (projectile.ai[0] >= num || (isDone && !player.controlUseItem))
             {
                 // Destroy Projectile
                 projectile.Kill();
                 // Reset the reuse delay ready for the next cycle
                 player.reuseDelay = 2;
-            } else if(isDone) // Check if we are done
+            }
+            else if (isDone) // Check if we are done
             {
                 // Get position of cursor
                 Vector2 mouseWorld = Main.MouseWorld;
                 // Check direction  towards cursor
                 int dir = (player.DirectionTo(mouseWorld).X > 0f) ? 1 : -1;
                 // Flip everything if direction is not same as player direction
-                if((float)dir != projectile.velocity.X)
+                if ((float)dir != projectile.velocity.X)
                 {
                     player.ChangeDir(dir);
                     projectile.velocity = new Vector2(dir, 0f);
@@ -133,13 +123,19 @@ namespace Retribution.Items.Weapons.Melee
             Vector2 dustVector1 = projectile.Center + (rotationValue + ((sign == -1) ? ((float)Math.PI) : 0f)).ToRotationVector2() * 30f;
             Vector2 dustPosition = rotationValue.ToRotationVector2();
             Vector2 dustVector2 = dustPosition.RotatedBy((float)Math.PI / 2f * (float)projectile.spriteDirection);
+            // Spawn Dust every 1 in 2 times
+            if (Main.rand.Next(2) == 0)
+            {
+                Dust dust = Dust.NewDustDirect(dustVector1 - new Vector2(5f), 10, 10, DustID.Blood, player.velocity.X, player.velocity.Y, 150);
+                dust.velocity = projectile.DirectionTo(dust.position) * 0.1f + dust.velocity * 0.1f;
+            }
             // Loop through 4 times to create dust
-            for(int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
                 // Sets dust offset
                 float scaleFactor2 = 1f;
                 float scaleFactor3 = 1f;
-                switch(i)
+                switch (i)
                 {
                     case 1:
                         scaleFactor3 = -1f;
@@ -154,7 +150,7 @@ namespace Retribution.Items.Weapons.Melee
                         break;
                 }
                 // Spawns Dust 5/6 times
-                if(Main.rand.Next(6) != 0)
+                if (Main.rand.Next(6) != 0)
                 {
                     Dust dust2 = Dust.NewDustDirect(projectile.position, 0, 0, DustID.AmberBolt, 0f, 0f, 100);
                     dust2.position = projectile.Center + dustPosition * (60f + Main.rand.NextFloat() * 20f) * scaleFactor3;
@@ -163,7 +159,7 @@ namespace Retribution.Items.Weapons.Melee
                     dust2.noLight = true;
                     dust2.scale = 0.5f;
                     dust2.customData = this;
-                    if(Main.rand.Next(4) == 0)
+                    if (Main.rand.Next(4) == 0)
                     {
                         dust2.noGravity = false;
                     }

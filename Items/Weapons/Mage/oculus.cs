@@ -21,7 +21,7 @@ namespace Retribution.Items.Weapons.Mage
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.useTime = 30;
 			item.useAnimation = 30;
-			item.damage = 16;
+			item.damage = 12;
 			item.crit = 4;
 			item.noMelee = true;
 			item.magic = true;

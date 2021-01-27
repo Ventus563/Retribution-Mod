@@ -46,11 +46,45 @@ namespace Retribution.NPCs.Bosses.TeachingBoss
 
         private int bulletTimer;
         private int dashTimer;
+        private int opacityTimer;
 
         private int soundCount = 0;
+        private int phaseCount = 0;
+
+        private bool stateEnraged = false;
 
         public override void AI()
         {
+            #region Enraged
+            if (npc.life <= npc.lifeMax / 2)
+            {
+                stateEnraged = true;
+            }
+            if (stateEnraged == true)
+            {
+                npc.alpha++;
+                opacityTimer++;
+                if (opacityTimer >= 120)
+                {
+                    npc.alpha--;
+                    phaseCount = 1;
+                }
+
+                if (opacityTimer >= 400)
+                {
+                    opacityTimer = 0;
+                    npc.alpha = 0;
+                }
+            }
+            if (npc.alpha == 0 && phaseCount == 1)
+            {
+                Main.PlaySound(SoundID.DD2_BetsyScream, (int)npc.position.X, (int)npc.position.Y);
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -8, -8, ProjectileID.Fireball, 100, 0f, Main.myPlayer, npc.whoAmI, 100);
+
+                phaseCount = 2;
+            }
+            #endregion
+
             #region Dash Attack
             npc.TargetClosest(true);
             Vector2 targetPosition = Main.player[npc.target].position;

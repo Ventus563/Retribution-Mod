@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.DataStructures;
+using Retribution.Projectiles;
 
 namespace Retribution.Items.Weapons.Melee
 {
@@ -38,11 +39,23 @@ namespace Retribution.Items.Weapons.Melee
 			item.melee = true;
 			item.UseSound = SoundID.Item1;
 			item.useTurn = true;
-			item.shoot = mod.ProjectileType("blazingchakramproj");
+			item.shoot = ModContent.ProjectileType<blazingchakramproj>();
 			item.shootSpeed = 12f;
 		}
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool CanUseItem(Player player)
+		{
+			if (player.ownedProjectileCounts[item.shoot] >= 40)
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 			for (int i = 0; i < 3; i++)
 			{

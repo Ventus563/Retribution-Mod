@@ -31,15 +31,5 @@ namespace Retribution.Items.Weapons.Mage
 			item.shootSpeed = 10f;
 			item.mana = 1;
 		}
-
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Wood, 5);
-			//recipe.AddIngredient(mod, "forestspirit", 3);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
 	}
 }

@@ -28,7 +28,7 @@ namespace Retribution.Items.Accessories
 		{
 			var rP = player.GetModPlayer<RetributionPlayer>();
 
-			rP.soulRecieve = 1;
+			rP.soulRecieve += 1;
 		}
 	}
 }

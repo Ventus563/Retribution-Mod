@@ -131,7 +131,7 @@ namespace Retribution.NPCs.TownNPCs
 			if (NPC.downedSlimeKing)
 			{
 				shop.item[nextSlot].SetDefaults(ItemID.KingSlimeBossBag);
-				shop.item[nextSlot].shopCustomPrice = 100000;
+				shop.item[nextSlot].shopCustomPrice = 300000;
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(ItemID.KingSlimeTrophy);
 				nextSlot++;
@@ -140,7 +140,7 @@ namespace Retribution.NPCs.TownNPCs
 			if (NPC.downedBoss1)
 			{
 				shop.item[nextSlot].SetDefaults(ItemID.EyeOfCthulhuBossBag);
-				shop.item[nextSlot].shopCustomPrice = 100000;
+				shop.item[nextSlot].shopCustomPrice = 300000;
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(ItemID.EyeofCthulhuTrophy);
 				nextSlot++;
@@ -149,10 +149,10 @@ namespace Retribution.NPCs.TownNPCs
 			if (NPC.downedBoss2)
 			{
 				shop.item[nextSlot].SetDefaults(ItemID.EaterOfWorldsBossBag);
-				shop.item[nextSlot].shopCustomPrice = 100000;
+				shop.item[nextSlot].shopCustomPrice = 300000;
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(ItemID.BrainOfCthulhuBossBag);
-				shop.item[nextSlot].shopCustomPrice = 100000;
+				shop.item[nextSlot].shopCustomPrice = 300000;
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(ItemID.EaterofWorldsTrophy);
 				nextSlot++;
@@ -162,7 +162,7 @@ namespace Retribution.NPCs.TownNPCs
 			if (NPC.downedQueenBee)
 			{
 				shop.item[nextSlot].SetDefaults(ItemID.QueenBeeBossBag);
-				shop.item[nextSlot].shopCustomPrice = 100000;
+				shop.item[nextSlot].shopCustomPrice = 300000;
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(ItemID.QueenBeeTrophy);
 				nextSlot++;
@@ -170,7 +170,7 @@ namespace Retribution.NPCs.TownNPCs
 			if (NPC.downedBoss3)
 			{
 				shop.item[nextSlot].SetDefaults(ItemID.SkeletronBossBag);
-				shop.item[nextSlot].shopCustomPrice = 100000;
+				shop.item[nextSlot].shopCustomPrice = 300000;
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(ItemID.SkeletronTrophy);
 				nextSlot++;
@@ -178,7 +178,7 @@ namespace Retribution.NPCs.TownNPCs
 			if (Main.hardMode)
 			{
 				shop.item[nextSlot].SetDefaults(ItemID.WallOfFleshBossBag);
-				shop.item[nextSlot].shopCustomPrice = 100000;
+				shop.item[nextSlot].shopCustomPrice = 300000;
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(ItemID.WallofFleshTrophy);
 				nextSlot++;

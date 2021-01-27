@@ -36,6 +36,7 @@ namespace Retribution.Items.Weapons.Melee
 			item.useTurn = true;
 			item.shoot = mod.ProjectileType("woodendaggerproj");
 			item.shootSpeed = 8f;
+			item.noUseGraphic = true;
 		}
 	}
 }

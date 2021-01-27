@@ -20,7 +20,7 @@ namespace Retribution.NPCs.Bosses.Morbus
         {
             npc.aiStyle = 2;
             npc.lifeMax = 150;
-            npc.damage = 25;
+            npc.damage = 40;
             npc.defense = 16;
             npc.knockBackResist = 0f;
             npc.width = 28;

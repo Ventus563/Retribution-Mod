@@ -37,7 +37,6 @@ namespace Retribution.Items.Weapons.Mage
 			recipe.AddIngredient(ItemID.Seashell, 5);
 			recipe.AddIngredient(ItemID.Starfish, 5);
 			recipe.AddIngredient(ItemID.Book);
-			//recipe.AddIngredient(mod, "waterspirit", 3);
 			recipe.needWater = true;
 			recipe.SetResult(this);
 			recipe.AddRecipe();

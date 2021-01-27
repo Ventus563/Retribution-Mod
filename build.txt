@@ -1,6 +1,7 @@
 displayName = Retribution Mod
 author = Royal Nobody
-version = 0.1
+version = 0.15
 includePDB = false
 hideCode = true
 hideResources = true
+modReferences = SubworldLibrary

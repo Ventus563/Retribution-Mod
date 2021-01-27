@@ -18,8 +18,8 @@ namespace Retribution.Items.Weapons.Melee
             item.useTime = 25;
 
             item.melee = true;
-            item.damage = 32;
-            item.knockBack = 5f;
+            item.damage = 28;
+            item.knockBack = 1f;
 
             item.noMelee = true;
             item.noUseGraphic = true;
@@ -29,7 +29,7 @@ namespace Retribution.Items.Weapons.Melee
 
             item.useStyle = ItemUseStyleID.HoldingOut;
 
-            item.shoot = ModContent.ProjectileType<VileStaggerProj>();
+            item.shoot = ModContent.ProjectileType<VileStaggerProjectile>();
             item.shootSpeed = 5f;
         }
 
@@ -40,7 +40,7 @@ namespace Retribution.Items.Weapons.Melee
 
     }
 
-    public class VileStaggerProj: ModProjectile
+    public class VileStaggerProjectile: ModProjectile
     {
         public override void SetDefaults()
         {
@@ -125,7 +125,7 @@ namespace Retribution.Items.Weapons.Melee
             // Spawn Dust every 1 in 2 times
             if(Main.rand.Next(2) == 0)
             {
-                Dust dust = Dust.NewDustDirect(dustVector1 - new Vector2(5f), 10, 10, DustID.Fire, player.velocity.X, player.velocity.Y, 150);
+                Dust dust = Dust.NewDustDirect(dustVector1 - new Vector2(5f), 10, 10, DustID.Shadowflame, player.velocity.X, player.velocity.Y, 150);
                 dust.velocity = projectile.DirectionTo(dust.position) * 0.1f + dust.velocity * 0.1f;
             }
             // Loop through 4 times to create dust

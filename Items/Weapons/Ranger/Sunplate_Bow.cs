@@ -19,7 +19,7 @@ namespace Retribution.Items.Weapons.Ranger
 
 		public override void SetDefaults()
 		{
-			item.damage = 10;
+			item.damage = 12;
 			item.ranged = true;
 			item.width = 18;
 			item.height = 64;
@@ -39,7 +39,7 @@ namespace Retribution.Items.Weapons.Ranger
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-			int numberProjectiles = 3;
+			int numberProjectiles = 1;
 			for (int index = 0; index < numberProjectiles; ++index)
 			{
 				Vector2 vector2_1 = new Vector2((float)((double)player.position.X + (double)player.width * 0.5 + (double)(Main.rand.Next(201) * -player.direction) + ((double)Main.mouseX + (double)Main.screenPosition.X - (double)player.position.X)), (float)((double)player.position.Y + (double)player.height * 0.5 - 600.0));   //this defines the projectile width, direction and position
