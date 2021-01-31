@@ -32,7 +32,7 @@ namespace Retribution
 
 		public override void Load()
 		{
-			if (!Main.dedServ)
+			if (Main.netMode != 2)
 			{
 				soulbar = new soulbar();
 				_soulbarUserInterface = new UserInterface();
@@ -41,11 +41,11 @@ namespace Retribution
 				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/cursedprotector"), ItemType("CursedProtector"), TileType("CursedProtectorBox"));
 			}
 
-			if (Main.netMode != NetmodeID.Server)
+			if (Main.netMode != 2)
 			{
-				Ref<Effect> filterRef = new Ref<Effect>(GetEffect("Effects/RedScreen"));
-
-				Filters.Scene["RedScreen"] = new Filter(new ScreenShaderData(filterRef, "RedScreen"), EffectPriority.Medium);
+				Ref<Effect> @ref = new Ref<Effect>(base.GetEffect("Effects/ShockwaveEffect"));
+				Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(@ref, "Shockwave"), (EffectPriority)4);
+				Filters.Scene["Shockwave"].Load();
 			}
 		}
 

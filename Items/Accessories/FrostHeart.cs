@@ -12,7 +12,7 @@ namespace Retribution.Items.Accessories
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Frost Heart");
-			Tooltip.SetDefault("When you deal damage, there is a 15% chance to release fast-moving ice spikes from your core.");
+			Tooltip.SetDefault("Ice Spikes are released from your core when you deal damage.");
 		}
 
 		public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)

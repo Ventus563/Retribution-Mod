@@ -26,34 +26,36 @@ namespace Retribution.NPCs.Bosses.Silva
 
             if (RetributionWorld.nightmareMode == false)
             {
-                npc.lifeMax = 2000;
+                npc.lifeMax = 1800;
             }
             if (RetributionWorld.nightmareMode == true)
             {
-                npc.lifeMax = 3000;
+                npc.lifeMax = 2300;
             }
 
             if (RetributionWorld.nightmareMode == false)
             {
-                npc.damage = 10;
+                npc.damage = 20;
             }
 
             if (RetributionWorld.nightmareMode == true)
             {
-                npc.damage = 25;
+                npc.damage = 35;
             }
 
-            npc.defense = 8;
+            npc.defense = 1;
             npc.knockBackResist = 0f;
             npc.width = 202;
             npc.height = 242;
             npc.value = Item.buyPrice(0, 4, 0, 0);
             npc.npcSlots = 12f;
             npc.boss = true;
-            npc.alpha = 0;
+            npc.noGravity = true;
             npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.DD2_BetsyScream;
+            npc.noTileCollide = true;
+            npc.DeathSound = SoundID.DD2_DrakinDeath;
             npc.buffImmune[BuffID.Confused] = true;
+            npc.behindTiles = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silva");
         }
 
@@ -68,24 +70,20 @@ namespace Retribution.NPCs.Bosses.Silva
         private bool enraged = false;
         private bool moving = true;
         private int soundAmount = 0;
+        private int spawnAmount = 1;
 
         private bool stateIdle = true;
         private bool stateIceBolt = false;
 
-        private int boltTimer;
-        private int attachTimer;
-        private int dashTimer;
+        private int summonTimer;
+        private int leafTimer;
+        private int logTimer;
+        private int logTimer2;
 
-        public bool crash;
-        public int teleport;
-        public int bail;
-        public int babySpawn;
-        public int noise;
-
-        public override void OnHitPlayer(Player target, int damage, bool crit)
-        {
-            target.AddBuff(ModContent.BuffType<TerrariasFrost>(), 180);
-        }
+        public bool doneSpawning = false;
+        private bool canLog = true;
+        private bool canFireTrigger = false;
+        private bool canFire = true;
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
@@ -93,69 +91,229 @@ namespace Retribution.NPCs.Bosses.Silva
             npc.damage = (int)(npc.damage * 0.6f);
         }
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            if (enraged == true)
-            {
-                Vector2 vector = new Vector2(0f, 0f);
-                SpriteEffects effects = (base.npc.spriteDirection < 0) ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-                for (int i = 0; i < base.npc.oldPos.Length; i++)
-                {
-                    Vector2 position = base.npc.oldPos[i] - Main.screenPosition + vector + new Vector2(0f, npc.gfxOffY);
-                    Color value = base.npc.GetAlpha(new Color(255, 255, 255, 10)) * ((float)(base.npc.oldPos.Length - i) / (float)base.npc.oldPos.Length);
-                    spriteBatch.Draw(Main.npcTexture[base.npc.type], position, new Rectangle?(base.npc.frame), value * 0.25f, base.npc.rotation, vector, base.npc.scale, effects, 0f);
-                }
-            }
-            return true;
-        }
-
         public override void AI()
         {
-            #region Animation Sets
-            if (stateIdle == true)
+            if (doneSpawning == false)
             {
-                this.frame = frameIdle;
-            }
-
-            if (stateIceBolt == true)
-            {
-                this.frame = frameIceBolt;
-            }
-            #endregion
-
-            #region Despawn
-            Player player = Main.player[npc.target];
-
-            if (!player.active || player.dead)
-            {
-                npc.TargetClosest(false);
-                player = Main.player[npc.target];
-                if (!player.active || player.dead)
+                if (spawnAmount == 1)
                 {
-                    npc.velocity = new Vector2(0f, 10f);
-                    if (npc.timeLeft > 30)
+                    Projectile.NewProjectile(npc.Center.X - 20, npc.Center.Y - 122, 0, 0, ModContent.ProjectileType<spawningDust>(), 0, 0f, Main.myPlayer, npc.whoAmI, 200);
+                    spawnAmount = 2;
+                    npc.damage = 0;
+                }
+                npc.position.Y -= 0.7f;
+                npc.ai[0]++;
+                Lighting.AddLight((int)npc.Center.X, (int)npc.Center.Y, 0.7f, 0.7f, 0.7f);
+
+                if (npc.ai[0] >= 329)
+                {
+                    npc.ai[0] = 0;
+                    doneSpawning = true;
+                    npc.noGravity = false;
+                    npc.noTileCollide = false;
+
+                    if (RetributionWorld.nightmareMode == false)
                     {
-                        npc.timeLeft = 30;
+                        npc.damage = 20;
                     }
-                    return;
+
+                    if (RetributionWorld.nightmareMode == true)
+                    {
+                        npc.damage = 35;
+                    }
                 }
             }
-            #endregion 
-
-            #region Enrage Trigger
-            if (npc.life <= npc.lifeMax / 2)
+            else
             {
-                enraged = true;
-                npc.alpha = 80;
-            }
+                #region Animation Sets
+                if (stateIdle == true)
+                {
+                    this.frame = frameIdle;
+                }
 
-            if (enraged == true && soundAmount == 0)
-            {
-                Main.PlaySound(SoundID.DD2_DrakinDeath, (int)npc.position.X, (int)npc.position.Y);
+                if (stateIceBolt == true)
+                {
+                    this.frame = frameIceBolt;
+                }
+                #endregion
 
-                soundAmount = 1;
+                #region Despawn
+                Player player = Main.player[npc.target];
+
+                if (!player.active || player.dead)
+                {
+                    npc.TargetClosest(false);
+                    player = Main.player[npc.target];
+                    if (!player.active || player.dead)
+                    {
+                        npc.velocity = new Vector2(0f, 10f);
+                        if (npc.timeLeft > 30)
+                        {
+                            npc.timeLeft = 30;
+                        }
+                        return;
+                    }
+                }
+                #endregion
+
+                #region Enrage Trigger
+                if (npc.life <= npc.lifeMax / 2)
+                {
+                    enraged = true;
+                }
+
+                if (enraged == true && soundAmount == 0)
+                {
+                    Main.PlaySound(SoundID.DD2_DrakinDeath, (int)npc.position.X, (int)npc.position.Y);
+
+                    soundAmount = 1;
+                }
+                #endregion
+
+                #region Razor Leaf
+
+                if (canFireTrigger == true)
+                {
+                    npc.ai[1]++;
+                    if (npc.ai[1] > 180)
+                    {
+                        canFire = true;
+                        canFireTrigger = false;
+                        npc.ai[1] = 0;
+                    }
+                }
+
+                if (canFire == true)
+                {
+                    leafTimer += 1;
+
+                    if (leafTimer > 120 && enraged == false && Main.netMode != 1)
+                    {
+                        base.npc.TargetClosest(true);
+                        Vector2 vector = Main.player[base.npc.target].Center + new Vector2(base.npc.Center.X, base.npc.Center.Y);
+                        Vector2 vector2 = base.npc.Center + new Vector2(base.npc.Center.X, base.npc.Center.Y);
+                        base.npc.netUpdate = true;
+
+                        Main.PlaySound(2, (int)base.npc.position.X, (int)base.npc.position.Y, 45, 1f, 0f);
+                        float num = (float)Math.Atan2((double)(vector2.Y - vector.Y), (double)(vector2.X - vector.X));
+                        int i = Projectile.NewProjectile(base.npc.Center.X, base.npc.Center.Y, (float)(Math.Cos((double)num) * 2.0 * -1.0), (float)(Math.Sin((double)num) * 2.0 * -1.0), ProjectileID.Leaf, 5, 0f, 0, 0f, 0f);
+                        Main.projectile[i].hostile = true;
+                        Main.projectile[i].friendly = false;
+
+                        if (Main.rand.NextFloat() < .50f && Main.netMode != 1)
+                        {
+                            Main.projectile[i].tileCollide = false;
+                            npc.netUpdate = true;
+                        }
+                        else
+                        {
+                            Main.projectile[i].tileCollide = true;
+                        }
+                        npc.netUpdate = true;
+
+                        if (leafTimer > 130)
+                        {
+                            leafTimer = 0;
+                        }
+                    }
+
+                    if (leafTimer > 60 && enraged == true && Main.netMode != 1)
+                    {
+                        base.npc.TargetClosest(true);
+                        Vector2 vector = Main.player[base.npc.target].Center + new Vector2(base.npc.Center.X, base.npc.Center.Y);
+                        Vector2 vector2 = base.npc.Center + new Vector2(base.npc.Center.X, base.npc.Center.Y);
+                        base.npc.netUpdate = true;
+
+                        Main.PlaySound(2, (int)base.npc.position.X, (int)base.npc.position.Y, 45, 1f, 0f);
+                        float num = (float)Math.Atan2((double)(vector2.Y - vector.Y), (double)(vector2.X - vector.X));
+                        int i = Projectile.NewProjectile(base.npc.Center.X, base.npc.Center.Y, (float)(Math.Cos((double)num) * 2.0 * -1.0), (float)(Math.Sin((double)num) * 2.0 * -1.0), ProjectileID.Leaf, 5, 0f, 0, 0f, 0f);
+                        Main.projectile[i].hostile = true;
+                        Main.projectile[i].friendly = false;
+
+                        if (Main.rand.NextFloat() < .50f && Main.netMode != 1)
+                        {
+                            Main.projectile[i].tileCollide = false;
+                            npc.netUpdate = true;
+                        }
+                        else
+                        {
+                            Main.projectile[i].tileCollide = true;
+                        }
+                        npc.netUpdate = true;
+
+                        if (leafTimer > 70)
+                        {
+                            leafTimer = 0;
+                        }
+                    }
+                }
+                
+                #endregion
+
+                #region Summon
+                summonTimer += 1;
+
+                if (summonTimer > 500 && Main.rand.NextFloat() < .40f && !NPC.AnyNPCs(ModContent.NPCType<EarthHeadMin>()) && Main.netMode != 1)
+                {
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y + 100, ModContent.NPCType<EarthHeadMin>());
+                    summonTimer = 0;
+                    npc.netUpdate = true;
+                }
+                else if (summonTimer > 501)
+                {
+                    summonTimer = 0;
+                }
+
+                if (summonTimer > 500 && Main.rand.NextFloat() < .40f && !NPC.AnyNPCs(ModContent.NPCType<LeafHead>()) && enraged == false && RetributionWorld.nightmareMode == true && Main.netMode != 1)
+                {
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y + 100, ModContent.NPCType<LeafHead>());
+                    summonTimer = 0;
+                    npc.netUpdate = true;
+                }
+                else if (summonTimer > 501)
+                {
+                    summonTimer = 0;
+                }
+
+                #endregion
+
+                #region Spawn Log
+
+                if (RetributionWorld.nightmareMode == true && enraged == true)
+                {
+                    logTimer++;
+
+                    if (logTimer > 180 && Main.rand.NextFloat() < .30f && canLog == true && Main.netMode != 1)
+                    {
+                        canFire = false;
+                        logTimer = 0;
+                        canLog = false;
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SilvaAttach>(), 0, 0f, 0, 0f, 0f);
+                        npc.netUpdate = true;
+                    }
+
+                    if (canLog == false && Main.netMode != 1)
+                    {
+                        logTimer2++;
+
+                        if (logTimer2 > 60 && Main.netMode != 1)
+                        {
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SilvaAttach>(), 0, 0f, 0, 0f, 0f);
+                            npc.netUpdate = true;
+                            canLog = true;
+                            logTimer2 = 0;
+                            canFireTrigger = true;
+                        }
+                    }
+
+                    else if (logTimer > 181)
+                    {
+                        logTimer = 0;
+                    }
+                }
+
+                #endregion
             }
-            #endregion
         }
 
         public override void FindFrame(int frameHeight)
@@ -243,12 +401,14 @@ namespace Retribution.NPCs.Bosses.Silva
 
         public override void NPCLoot()
         {
+            Main.NewText("The spirits of the Forest have been unveiled...", 61, 153, 69, true);
+
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Tesca1"), 1f);
             Gore.NewGore(npc.position, -npc.velocity, mod.GetGoreSlot("Gores/Tesca0"), 1f);
 
             if (Main.rand.NextFloat() < .20f)
             {
-                Item.NewItem(npc.getRect(), ModContent.ItemType<SnowingFrost>(), 1);
+                //Item.NewItem(npc.getRect(), ModContent.ItemType<SnowingFrost>(), 1);
             }
 
             //RetributionWorld.downedTesca = true;

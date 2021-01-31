@@ -212,7 +212,12 @@ namespace Retribution
         {
 			if (player.whoAmI == Main.myPlayer && player.HasBuff(ModContent.BuffType<TerrariasFrost>()))
 			{
-				player.accRunSpeed = 4;
+				player.moveSpeed -= .5f;
+			}
+
+			if (player.whoAmI == Main.myPlayer && player.HasBuff(BuffID.Slimed))
+			{
+				player.moveSpeed -= .1f;
 			}
 		}
 

@@ -25,14 +25,19 @@ namespace Retribution.Projectiles
 			projectile.height = 5;
 			projectile.aiStyle = 0;
 			projectile.friendly = true;
-			projectile.tileCollide = true;
+			projectile.tileCollide = false;
 			projectile.penetrate = 1;
+            projectile.timeLeft = 120;
             projectile.alpha = 255;
+            projectile.extraUpdates = 2;
 		}
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.OnFire, 120);
+            if (Main.rand.NextFloat() < .05f)
+            {
+                target.AddBuff(BuffID.OnFire, 120);
+            }
         }
 
         public override void Kill(int timeLeft)
@@ -45,7 +50,6 @@ namespace Retribution.Projectiles
 
             const int NUM_DUSTS = 20;
 
-            // Spawn some dusts upon javelin death
             for (int i = 0; i < NUM_DUSTS; i++)
             {
                 Dust dust;

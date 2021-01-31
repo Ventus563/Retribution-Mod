@@ -444,6 +444,8 @@ namespace Retribution.NPCs.Bosses.Tesca
 
         public override void NPCLoot()
         {
+            Main.NewText("The essence of the Tundra has been released...", 111, 199, 214, true);
+
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Tesca1"), 1f);
             Gore.NewGore(npc.position, -npc.velocity, mod.GetGoreSlot("Gores/Tesca0"), 1f);
 

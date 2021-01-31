@@ -28,34 +28,31 @@ namespace Retribution.NPCs.Bosses.Locus
             projectile.friendly = false;
 			projectile.width = 62;
 			projectile.height = 18;
-			projectile.aiStyle = 1;
+			projectile.aiStyle = 0;
 			projectile.friendly = false;
 			projectile.ranged = true;
-			projectile.timeLeft = 120;
+			projectile.timeLeft = 20;
             projectile.alpha = 100;
 			projectile.tileCollide = true;
 			projectile.friendly = false;
             projectile.knockBack = 15;
 			projectile.penetrate = 1;
-			aiType = 1;
 
 		}
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y);
-            Vector2 usePos = projectile.position;
-
-
-            const int NUM_DUSTS = 20;
-
-            for (int i = 0; i < NUM_DUSTS; i++)
+            if (Locus.sideRight == true)
             {
-                Dust dust;
-                Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 31, 0f, 0f, 0, new Color(255, 255, 255), 0.8552632f)];
-                dust.noGravity = true;
-                dust.noLight = true;
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 6, -6, ModContent.ProjectileType<MiniWave>(), 100, 0f, Main.myPlayer, projectile.whoAmI, 100);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 8, 0, ModContent.ProjectileType<MiniWave>(), 100, 0f, Main.myPlayer, projectile.whoAmI, 100);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 6, 6, ModContent.ProjectileType<MiniWave>(), 100, 0f, Main.myPlayer, projectile.whoAmI, 100);
+            }
+            else
+            {
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -6, 6, ModContent.ProjectileType<MiniWave>(), 100, 0f, Main.myPlayer, projectile.whoAmI, 100);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -8, 0, ModContent.ProjectileType<MiniWave>(), 100, 0f, Main.myPlayer, projectile.whoAmI, 100);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -6, -6, ModContent.ProjectileType<MiniWave>(), 100, 0f, Main.myPlayer, projectile.whoAmI, 100);
             }
         }
 
@@ -69,6 +66,11 @@ namespace Retribution.NPCs.Bosses.Locus
                 spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
             }
             return true;
+        }
+
+        public override void AI()
+        {
+            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2;
         }
     }
 }

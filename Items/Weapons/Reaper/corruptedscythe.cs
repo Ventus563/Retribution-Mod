@@ -23,7 +23,7 @@ namespace Retribution.Items.Weapons.Reaper
 		{
 			item.channel = true;
 			item.maxStack = 1;
-			item.damage = 21;
+			item.damage = 10;
 			item.width = 32;
 			item.height = 30;
 			item.useTime = 25;

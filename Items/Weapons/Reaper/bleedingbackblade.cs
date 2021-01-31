@@ -23,7 +23,7 @@ namespace Retribution.Items.Weapons.Reaper
 		{
 			item.channel = true;
 			item.maxStack = 1;
-			item.damage = 21;
+			item.damage = 11;
 			item.width = 32;
 			item.height = 30;
 			item.useTime = 25;
@@ -49,7 +49,7 @@ namespace Retribution.Items.Weapons.Reaper
 			if (player.altFunctionUse == 2 && retributionPlayer.soulCurrent >= 1)
 			{
 				item.useStyle = ItemUseStyleID.HoldingOut;
-				item.useTime = 20;
+				item.useTime = 11;
 				item.useAnimation = 20;
 				item.damage = 15;
 				item.crit = 10; 
@@ -82,7 +82,7 @@ namespace Retribution.Items.Weapons.Reaper
 
 		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			int numberProjectiles = 8;
+			int numberProjectiles = 6;
 			for (int index = 0; index < numberProjectiles; ++index)
 			{
 				Vector2 vector2_1 = new Vector2((float)((double)player.position.X + (double)player.width * 0.5 + (double)(Main.rand.Next(201) * -player.direction) + ((double)Main.mouseX + (double)Main.screenPosition.X - (double)player.position.X)), (float)((double)player.position.Y + (double)player.height * 0.5 - 600.0));   //this defines the projectile width, direction and position

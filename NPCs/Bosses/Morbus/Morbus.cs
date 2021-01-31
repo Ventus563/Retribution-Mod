@@ -141,7 +141,7 @@ namespace Retribution.NPCs.Bosses.Morbus
                 #region Despawn
                 Player player = Main.player[npc.target];
 
-                if (!player.active || player.dead)
+                if (!player.active || player.dead && Main.netMode != 1)
                 {
                     npc.TargetClosest(false);
                     player = Main.player[npc.target];
@@ -158,7 +158,7 @@ namespace Retribution.NPCs.Bosses.Morbus
                 #endregion
 
                 #region Enrage Trigger
-                if (npc.life <= npc.lifeMax / 2)
+                if (npc.life <= npc.lifeMax / 2 && Main.netMode != 1)
                 {
                     enraged = true;
                     stateEnraged = true;
@@ -168,13 +168,15 @@ namespace Retribution.NPCs.Bosses.Morbus
                     npc.alpha = 100;
                 }
 
-                if (enraged == true && soundAmount == 0)
+                if (enraged == true && soundAmount == 0 && Main.netMode != 1)
                 {
                     Main.PlaySound(SoundID.DD2_BetsyScream, (int)npc.position.X, (int)npc.position.Y);
 
                     Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Morbus_Left"), 1f);
 
                     Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Morbus_Right"), 1f);
+
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, ModContent.ProjectileType<ShockwaveEffect>(), 0, 0f, 255, 0f, 0f);
 
                     soundAmount = 1;
                 }
@@ -679,15 +681,20 @@ namespace Retribution.NPCs.Bosses.Morbus
 
         public override void NPCLoot()
         {
+            if (RetributionWorld.downedMorbus == false)
+            {
+                Main.NewText("The Corruption's pneuma has been released from it's shackles...", 108, 92, 145, true);
+                RetributionWorld.downedMorbus = true;
+
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    NetMessage.SendData(MessageID.WorldData);
+                }
+            }
+
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Morbus2_1"), 1f);
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Morbus2_2"), 1f);
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Morbus2_3"), 1f);
-
-            RetributionWorld.downedMorbus = true;
-            if (Main.netMode == NetmodeID.Server)
-            {
-                NetMessage.SendData(MessageID.WorldData);
-            }
         }
     }
 }

@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Graphics.Shaders;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Retribution.Projectiles
 {
@@ -24,7 +25,6 @@ namespace Retribution.Projectiles
 			projectile.tileCollide = false;
 			projectile.penetrate = -1;
 			aiType = 0;
-
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

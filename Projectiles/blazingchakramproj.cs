@@ -73,7 +73,6 @@ namespace Retribution.Projectiles
 
             const int NUM_DUSTS = 20;
 
-            // Spawn some dusts upon javelin death
             for (int i = 0; i < NUM_DUSTS; i++)
             {
                 Dust dust;
