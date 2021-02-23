@@ -36,7 +36,7 @@ namespace Retribution.Items.Weapons.Melee
             item.melee = true;
             item.UseSound = SoundID.Item1;
             item.useTurn = true;
-            item.shoot = ProjectileID.BoneGloveProj;
+            item.shoot = 623;
             item.shootSpeed = 15f;
         }
 
