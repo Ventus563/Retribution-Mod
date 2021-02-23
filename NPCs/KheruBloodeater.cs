@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Retribution.Items.Materials;
 
 namespace Retribution.NPCs
 { 
@@ -35,6 +36,11 @@ namespace Retribution.NPCs
 			return SpawnCondition.OverworldNightMonster.Chance * 0.5f;
 		}
 
+               public override void NPCLoot()
+               { 
+                      Item.NewItem(npc.getRect(), ModContent.ItemType<Blood>(), 2);
+               }
+                     
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			for (int i = 0; i < 10; i++)
